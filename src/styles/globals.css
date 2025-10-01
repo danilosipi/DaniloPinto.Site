@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary-900: 4 39 67;
+  --color-primary-700: 6 63 97;
+  --color-primary-500: 11 105 163;
+  --color-accent: 255 184 77;
+  --color-bg: 247 249 252;
+  --color-text: 11 27 43;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary-900: 11 26 46;
+    --color-primary-700: 24 58 102;
+    --color-primary-500: 34 86 148;
+    --color-accent: 241 178 74;
+    --color-bg: 13 18 28;
+    --color-text: 226 232 240;
+  }
+}
+
+.dark {
+  --color-primary-900: 11 26 46;
+  --color-primary-700: 24 58 102;
+  --color-primary-500: 34 86 148;
+  --color-accent: 241 178 74;
+  --color-bg: 13 18 28;
+  --color-text: 226 232 240;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.65;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  color: rgb(var(--color-primary-500));
+}
+
+::selection {
+  background-color: rgb(var(--color-primary-500));
+  color: #ffffff;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  .bg-surface {
+    @apply rounded-2xl border bg-white shadow-soft;
+    border-color: rgb(var(--color-primary-500) / 0.12);
+    background-color: rgb(var(--color-bg) / 0.95);
+  }
+
+  .dark .bg-surface {
+    background-color: rgb(var(--color-bg) / 0.75);
+    border-color: rgb(var(--color-primary-500) / 0.2);
+    @apply text-[var(--color-text)];
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight;
+    color: rgb(var(--color-text));
+  }
+
+  .section-subtitle {
+    @apply text-base;
+    color: rgb(var(--color-text) / 0.72);
+  }
+}
