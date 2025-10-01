@@ -16,14 +16,21 @@ import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 const contactSchema = z.object({
   name: z
     .string()
-    .min(2, 'Informe seu nome completo para seguirmos')
-    .max(80, 'Use no maximo 80 caracteres'),
-  email: z.string().email('Informe um email valido'),
-  company: z.string().optional(),
-  message: z
+    .min(3, 'Nome muito curto.')
+    .regex(/(\w.+\s).+/, 'Por favor, informe seu nome completo.')
+    .regex(/^[a-zA-Z\s]+$/, 'O nome deve conter apenas letras e espaços.'),
+  email: z
     .string()
-    .min(10, 'Compartilhe um pouco mais sobre o desafio ou oportunidade')
-    .max(1000, 'Mensagem muito longa, tente resumir em ate 1000 caracteres'),
+    .email('Informe um email válido.')
+    .refine(
+      (e) => !['email@email.com', 'test@test.com', 'example@example.com'].includes(e.toLowerCase()),
+      'Por favor, use um endereço de e-mail real.',
+    ),
+  company: z
+    .string()
+    .min(2, 'O nome da empresa é obrigatório.')
+    .refine((c) => c.toLowerCase() !== 'empresa', 'Por favor, insira um nome de empresa válido.'),
+  message: z.string().min(30, 'Por favor, detalhe um pouco mais sua mensagem.').max(1000),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;

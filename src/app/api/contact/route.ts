@@ -4,9 +4,23 @@ import { z } from 'zod';
 
 // Zod schema for server-side validation
 const contactSchema = z.object({
-  name: z.string().min(2).max(80),
-  email: z.string().email(),
-  message: z.string().min(10).max(1000),
+  name: z
+    .string()
+    .min(3, 'Nome muito curto.')
+    .regex(/(\w.+\s).+/, 'Por favor, informe seu nome completo.')
+    .regex(/^[a-zA-Z\s]+$/, 'O nome deve conter apenas letras e espaços.'),
+  email: z
+    .string()
+    .email('Informe um email válido.')
+    .refine(
+      (e) => !['email@email.com', 'test@test.com', 'example@example.com'].includes(e.toLowerCase()),
+      'Por favor, use um endereço de e-mail real.',
+    ),
+  company: z
+    .string()
+    .min(2, 'O nome da empresa é obrigatório.')
+    .refine((c) => c.toLowerCase() !== 'empresa', 'Por favor, insira um nome de empresa válido.'),
+  message: z.string().min(30, 'Por favor, detalhe um pouco mais sua mensagem.').max(1000),
 });
 
 export async function POST(req: NextRequest) {
@@ -18,10 +32,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
     }
 
-    const { name, email, message } = parsed.data;
+    const { name, email, company, message } = parsed.data;
 
     // IMPORTANT: These values should be in your .env.local file
-    const { 
+    const {
       EMAIL_SERVER_HOST,
       EMAIL_SERVER_PORT,
       EMAIL_SERVER_USER,
@@ -56,15 +70,17 @@ export async function POST(req: NextRequest) {
     });
 
     const mailOptions = {
-      from: `"${name}" <${EMAIL_FROM}>`, // Use a friendly "from" name
+      from: `"${name}" <${EMAIL_FROM}>`,
       to: EMAIL_TO,
       replyTo: email,
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `[Curriculo Digital] Nova Mensagem de Contato de ${name}`,
       html: `
-        <h1>New Contact Form Submission</h1>
-        <p><strong>Name:</strong> ${name}</p>
+        <h1>Nova Mensagem de Contato</h1>
+        <p>Parabéns Você recebeu uma nova mensagem de contato através do formulario de contato do seu site (http://danilopinto.dstudium.com).</p>
+        <p><strong>Nome:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
+        <p><strong>Empresa:</strong> ${company || 'N/A'}</p>
+        <p><strong>Mensagem:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,
     };
