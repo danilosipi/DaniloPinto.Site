@@ -17,10 +17,10 @@ const jsonLd = {
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Sao Paulo',
-    addressCountry: 'BR'
+    addressCountry: 'BR',
   },
   url: siteConfig.website,
-  sameAs: [siteConfig.linkedin]
+  sameAs: [siteConfig.linkedin],
 };
 
 const defaultSeo = getDefaultSeo();
@@ -44,28 +44,30 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.website),
   title: {
     default: defaultSeo.title,
-    template: `%s | ${siteConfig.name}`
+    template: `%s | ${siteConfig.name}`,
   },
   description: defaultSeo.description,
   keywords: defaultSeo.keywords,
   openGraph: {
-    ...defaultSeo.openGraph
+    ...defaultSeo.openGraph,
   },
   twitter: {
-    ...defaultSeo.twitter
+    ...defaultSeo.twitter,
   },
   alternates: {
-    canonical: siteConfig.website
-  }
+    canonical: siteConfig.website,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: initialThemeScript }} />
+      </head>
       <body
         className={`${fontSans.variable} ${fontMono.variable} flex min-h-screen flex-col bg-[var(--color-bg)] text-[var(--color-text)] antialiased`}
       >
-        <script dangerouslySetInnerHTML={{ __html: initialThemeScript }} />
         <Header />
         <main id="conteudo-principal" className="flex-1">
           {children}

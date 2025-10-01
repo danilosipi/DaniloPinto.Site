@@ -29,10 +29,10 @@ export const metadata: Metadata = {
 export default function CvPage() {
   return (
     <Container className="py-16">
-      <div className="mx-auto max-w-3xl rounded-2xl border border-primary-500/10 bg-white p-10 text-center shadow-soft">
+      <div className="mx-auto max-w-3xl rounded-2xl border border-primary-500/10 bg-surface p-10 text-center shadow-soft">
         <span className="text-xs uppercase tracking-[0.25em] text-primary-500">Curriculum</span>
-        <h1 className="mt-2 text-4xl font-semibold text-primary-900">Resumo profissional</h1>
-        <p className="mt-4 text-primary-700/90">
+        <h1 className="mt-2 text-4xl font-semibold text-default">Resumo profissional</h1>
+        <p className="mt-4 text-soft">
           Acesse o PDF completo com experiencias corporativas, projetos conduzidos e certificacoes.
           Atualize com a versao oficial quando houver mudancas.
         </p>

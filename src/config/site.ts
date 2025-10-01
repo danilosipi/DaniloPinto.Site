@@ -8,9 +8,9 @@ export const siteConfig = {
   linkedin: 'https://www.linkedin.com/in/danilopinto',
   website: 'https://danilopinto.dstudium.com',
   whatsappMessage:
-    'Ola Danilo, gostaria de conversar sobre oportunidades ou projetos - vi seu portfolio digital e achei bem interessante.',
+    'Ola, gostaria de conversar sobre oportunidades ou projetos - vi seu portfolio digital e achei bem interessante.',
   seo: {
-    defaultTitle: 'Danilo Pinto | Transformacao Digital e Sistemas Confiaveis',
+    defaultTitle: 'Danilo Pinto - Gerente / Coordenador de Sistemas e Projetos de TI',
     defaultDescription:
       'Gerente / Coordenador de Sistemas e Projetos de TI com 15+ anos liderando squads e programas de transformacao digital, automacao e confiabilidade em seguros e resseguros.',
     keywords: [
@@ -51,7 +51,7 @@ export const corporateExperience: ExperienceItem[] = [
     role: 'Associate Director | Sistemas de Resseguro',
     period: 'mar/2021 - jul/2025',
     location: 'Sao Paulo, Brasil',
-    type: 'andamento',
+    type: 'concluido',
     achievements: [
       'Lidera squads aplicando Scrum, SAFe e DevOps com 99.9% de disponibilidade em sistemas criticos de resseguro.',
       'Reestruturou arquitetura garantindo escalabilidade e ganhos de 30% em performance e estabilidade.',

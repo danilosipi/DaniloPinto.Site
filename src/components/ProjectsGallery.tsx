@@ -36,10 +36,10 @@ export function ProjectsGallery({ projects }: { projects: Project[] }) {
           className="space-y-6"
         >
           <div className="flex items-center justify-between gap-4">
-            <h3 id={`projects-${group.status}`} className="text-2xl font-semibold text-primary-900">
+            <h3 id={`projects-${group.status}`} className="text-2xl font-semibold text-default">
               {group.label}
             </h3>
-            <span className="text-sm text-primary-700/70">{group.items.length} projetos</span>
+            <span className="text-sm text-subtle">{group.items.length} projetos</span>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {group.items.map((project) => (
@@ -59,9 +59,9 @@ export function ProjectsGallery({ projects }: { projects: Project[] }) {
                 <span className={clsx('text-xs uppercase tracking-[0.25em]', 'text-primary-500')}>
                   {statusLabels[project.status] ?? project.status}
                 </span>
-                <h4 className="mt-2 text-xl font-semibold text-primary-900">{project.title}</h4>
-                <p className="mt-2 text-sm text-primary-700/90">{project.excerpt}</p>
-                <div className="mt-4 flex flex-wrap gap-2 text-xs text-primary-600/80">
+                <h4 className="mt-2 text-xl font-semibold text-default">{project.title}</h4>
+                <p className="mt-2 text-sm text-soft">{project.excerpt}</p>
+                <div className="mt-4 flex flex-wrap gap-2 text-xs text-subtle">
                   <time
                     dateTime={project.date}
                     className="rounded-full bg-primary-500/10 px-3 py-1"

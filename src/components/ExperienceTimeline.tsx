@@ -1,4 +1,4 @@
-﻿import { corporateExperience, ExperienceItem } from '@/config/site';
+import { corporateExperience, ExperienceItem } from '@/config/site';
 
 const typeLabels: Record<ExperienceItem['type'], string> = {
   andamento: 'Em andamento',
@@ -11,21 +11,21 @@ export function ExperienceTimeline() {
     <ol className="relative border-s border-primary-500/20 pl-6">
       {corporateExperience.map((experience, index) => (
         <li key={`${experience.company}-${index}`} className="mb-10 last:mb-0">
-          <div className="absolute -left-[10px] mt-1 h-4 w-4 rounded-full border-2 border-white bg-primary-500 shadow-soft" />
+          <div className="absolute -left-[10px] mt-1 h-4 w-4 rounded-full border-2 border-background bg-primary-500 shadow-soft" />
           <div className="bg-surface p-6">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-primary-500">
                   {typeLabels[experience.type]}
                 </p>
-                <h3 className="text-xl font-semibold text-primary-900">{experience.role}</h3>
+                <h3 className="text-xl font-semibold text-default">{experience.role}</h3>
               </div>
-              <span className="text-sm font-medium text-primary-700/80">{experience.period}</span>
+              <span className="text-sm font-medium text-muted">{experience.period}</span>
             </div>
-            <p className="mt-1 text-sm text-primary-700/70">
-              {experience.company} — {experience.location}
+            <p className="mt-1 text-sm text-subtle">
+              {experience.company} - {experience.location}
             </p>
-            <ul className="mt-4 list-inside space-y-2 text-sm text-primary-700/90">
+            <ul className="mt-4 list-inside space-y-2 text-sm text-soft">
               {experience.achievements.map((achievement) => (
                 <li key={achievement} className="flex gap-2">
                   <span

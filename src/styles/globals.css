@@ -3,12 +3,96 @@
 @tailwind utilities;
 
 :root {
+  --navy: #042743;
+  --gray-dark: #2f2f2f;
+  --white: #ffffff;
+  --black: #000000;
+  --accent: #ffb84d;
+  /* CTA accent */
+}
+
+/* Light mode defaults */
+:root {
+  --bg-page: var(--white);
+  --text-page: var(--black);
+  --section-odd-bg: var(--white);
+  --section-odd-text: var(--navy);
+  --section-even-bg: var(--white);
+  --section-even-text: var(--black);
+  --btn-bg: var(--navy);
+  --btn-text: var(--white);
+  --btn-outline-text: var(--navy);
+}
+
+/* Dark mode overrides */
+:root.dark {
+  --bg-page: var(--navy);
+  --text-page: var(--white);
+  --section-odd-bg: var(--navy);
+  --section-odd-text: var(--white);
+  --section-even-bg: var(--gray-dark);
+  --section-even-text: var(--white);
+  --btn-bg: var(--accent);
+  --btn-text: var(--navy);
+  --btn-outline-text: var(--white);
+}
+
+/* Basic resets and utilities */
+body {
+  background: var(--bg-page);
+  color: var(--text-page);
+}
+
+.section {
+  padding: 3rem 1rem;
+}
+
+.section.odd {
+  background: var(--section-odd-bg);
+  color: var(--section-odd-text);
+}
+
+.section.even {
+  background: var(--section-even-bg);
+  color: var(--section-even-text);
+}
+
+/* Buttons adapt to session colors by using the CSS vars */
+.btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--btn-outline-text);
+  border: 1px solid var(--btn-outline-text);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Specific button overrides for contrast in odd/dark sections */
+.dark .section.odd .btn-outline {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+:root {
   --color-primary-900: 4 39 67;
   --color-primary-700: 6 63 97;
   --color-primary-500: 11 105 163;
   --color-accent: 255 184 77;
   --color-bg: 247 249 252;
   --color-text: 11 27 43;
+  --color-hero-bg: 252 253 255;
+  --color-section-bg: 241 245 252;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +103,8 @@
     --color-accent: 241 178 74;
     --color-bg: 13 18 28;
     --color-text: 226 232 240;
+    --color-hero-bg: 13 18 28;
+    --color-section-bg: 18 24 34;
   }
 }
 
@@ -29,6 +115,8 @@
   --color-accent: 241 178 74;
   --color-bg: 13 18 28;
   --color-text: 226 232 240;
+  --color-hero-bg: 13 18 28;
+  --color-section-bg: 18 24 34;
 }
 
 html {
@@ -39,9 +127,17 @@ body {
   min-height: 100vh;
   background: rgb(var(--color-bg));
   color: rgb(var(--color-text));
-  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family:
+    var(--font-sans),
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
   line-height: 1.65;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 a {
@@ -60,6 +156,7 @@ a:focus-visible {
 }
 
 @layer base {
+
   h1,
   h2,
   h3,
@@ -76,15 +173,23 @@ a:focus-visible {
 
 @layer utilities {
   .bg-surface {
-    @apply rounded-2xl border bg-white shadow-soft;
+    @apply rounded-2xl border shadow-soft;
     border-color: rgb(var(--color-primary-500) / 0.12);
     background-color: rgb(var(--color-bg) / 0.95);
   }
 
   .dark .bg-surface {
-    background-color: rgb(var(--color-bg) / 0.75);
-    border-color: rgb(var(--color-primary-500) / 0.2);
-    @apply text-[var(--color-text)];
+    background-color: rgb(var(--color-bg) / 0.6);
+    border-color: rgb(var(--color-primary-500) / 0.25);
+    color: rgb(var(--color-text));
+  }
+
+  .bg-hero {
+    background-color: rgb(var(--color-hero-bg));
+  }
+
+  .bg-section {
+    background-color: rgb(var(--color-section-bg));
   }
 
   .section-title {
@@ -95,5 +200,25 @@ a:focus-visible {
   .section-subtitle {
     @apply text-base;
     color: rgb(var(--color-text) / 0.72);
+  }
+
+  .text-default {
+    color: rgb(var(--color-text));
+  }
+
+  .text-soft {
+    color: rgb(var(--color-text) / 0.88);
+  }
+
+  .text-muted {
+    color: rgb(var(--color-text) / 0.72);
+  }
+
+  .text-subtle {
+    color: rgb(var(--color-text) / 0.6);
+  }
+
+  .text-faint {
+    color: rgb(var(--color-text) / 0.5);
   }
 }

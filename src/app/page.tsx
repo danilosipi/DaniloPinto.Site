@@ -9,6 +9,7 @@ import { heroSection, skillTags, siteConfig } from '@/config/site';
 import { getCanonicalPath, getDefaultSeo } from '@/lib/seo';
 import { getWhatsappUrl } from '@/utils/contact';
 import { allProjects } from 'contentlayer/generated';
+import Section from '@/components/Section';
 
 function sortProjects() {
   return [...allProjects].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -37,17 +38,17 @@ export default function HomePage() {
 
   return (
     <div className="space-y-24 pb-24">
-      <section id="hero" className="bg-white">
+      <section id="hero" className="bg-hero">
         <Container className="flex flex-col gap-10 py-16 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-6">
             <span className="text-xs uppercase tracking-[0.4em] text-primary-500">
               Delivery manager & transformacao digital
             </span>
-            <h1 className="text-4xl font-semibold leading-tight text-primary-900 lg:text-5xl">
+            <h1 className="text-4xl font-semibold leading-tight text-default lg:text-5xl">
               {heroSection.headline}
             </h1>
-            <p className="text-lg text-primary-700/90">{heroSection.subheadline}</p>
-            <p className="text-primary-700/80">{heroSection.bio}</p>
+            <p className="text-lg text-soft">{heroSection.subheadline}</p>
+            <p className="text-muted">{heroSection.bio}</p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <CTAButton
                 href={getWhatsappUrl(
@@ -72,7 +73,7 @@ export default function HomePage() {
               className="absolute inset-4 rounded-[36px] bg-primary-500/10 blur-3xl"
               aria-hidden
             />
-            <div className="relative mx-auto h-80 w-80 overflow-hidden rounded-[32px] border border-primary-500/10 bg-white shadow-soft">
+            <div className="relative mx-auto h-80 w-80 overflow-hidden rounded-[32px] border border-primary-500/10 bg-surface shadow-soft">
               <Image
                 src="/images/headshot-placeholder.jpg"
                 alt={`Foto profissional de ${siteConfig.name}`}
@@ -86,7 +87,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section id="experiencia" aria-labelledby="experiencia-heading">
+      <section id="experiencia" aria-labelledby="experiencia-heading" className="bg-section">
         <Container className="space-y-8">
           <div className="space-y-2">
             <h2 id="experiencia-heading" className="section-title">
@@ -101,7 +102,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section id="skills" aria-labelledby="skills-heading" className="bg-white py-16">
+      <section id="skills" aria-labelledby="skills-heading" className="bg-section py-16">
         <Container className="space-y-6">
           <div className="space-y-2">
             <h2 id="skills-heading" className="section-title">
@@ -114,7 +115,7 @@ export default function HomePage() {
           </div>
           <ul className="flex flex-wrap gap-3" aria-label="Lista de habilidades">
             {skillTags.map((skill) => (
-              <li key={skill} className="bg-surface px-4 py-2 text-sm font-medium text-primary-700">
+              <li key={skill} className="bg-surface px-4 py-2 text-sm font-medium text-soft">
                 {skill}
               </li>
             ))}
@@ -137,13 +138,13 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16" aria-labelledby="conectar-heading">
-        <Container className="grid gap-8 rounded-2xl border border-primary-500/10 bg-white p-8 shadow-soft lg:grid-cols-[2fr_1fr] lg:items-center">
+      <section className="bg-section py-16" aria-labelledby="conectar-heading">
+        <Container className="grid gap-8 rounded-2xl border border-primary-500/10 bg-surface p-8 shadow-soft lg:grid-cols-[2fr_1fr] lg:items-center">
           <div className="space-y-4">
-            <h2 id="conectar-heading" className="text-3xl font-semibold text-primary-900">
+            <h2 id="conectar-heading" className="text-3xl font-semibold text-default">
               Vamos conversar sobre o proximo ciclo de transformacao do seu time
             </h2>
-            <p className="text-primary-700/80">
+            <p className="text-muted">
               Ajudo liderancas a conectar objetivos estrategicos com execucao, trazendo estrutura,
               indicadores e cultura de confiabilidade.
             </p>
@@ -166,6 +167,17 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      {Array.from({ length: 8 }).map((_, i) => (
+        <Section key={i} index={i + 1}>
+          <h2 className="text-2xl font-bold mb-2">Sessão {i + 1}</h2>
+          <p>Conteúdo de teste para verificar cores e contraste nesta sessão.</p>
+          <div className="mt-4 space-x-2">
+            <button className="btn">Botão Principal</button>
+            <button className="btn-outline">Botão Secundário</button>
+          </div>
+        </Section>
+      ))}
     </div>
   );
 }

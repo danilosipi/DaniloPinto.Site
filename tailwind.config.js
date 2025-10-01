@@ -1,18 +1,18 @@
 const withOpacityValue =
   (variable) =>
-  ({ opacityValue } = {}) => {
-    if (opacityValue === undefined) {
-      return `rgb(var(${variable}) / 1)`;
-    }
-    return `rgb(var(${variable}) / ${opacityValue})`;
-  };
+    ({ opacityValue } = {}) => {
+      if (opacityValue === undefined) {
+        return `rgb(var(${variable}) / 1)`;
+      }
+      return `rgb(var(${variable}) / ${opacityValue})`;
+    };
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   content: [
     './src/app/**/*.{ts,tsx,mdx}',
-    './src/components/**/*.{ts,tsx}',
+    './src/components/**/*.{ts,tsx,mdx}',
     './src/content/**/*.{md,mdx}',
   ],
   theme: {

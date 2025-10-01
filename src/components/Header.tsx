@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import { Container } from '@/components/Container';
 import { CTAButton } from '@/components/CTAButton';
+import ThemeToggle from '@/components/ThemeToggle';
 import { siteConfig } from '@/config/site';
 import { getWhatsappUrl } from '@/utils/contact';
 
@@ -14,6 +15,8 @@ const navigation = [
   { href: '#projetos', label: 'Projetos' },
   { href: '/contato', label: 'Contato' },
 ];
+
+const internalHref = (href: string) => href as Parameters<typeof Link>[0]['href'];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +35,7 @@ export function Header() {
 
     return (
       <Link
-        href={href as Parameters<typeof Link>[0]['href']}
+        href={internalHref(href)}
         className="transition-colors hover:text-primary-500 focus-visible:text-primary-500"
       >
         {label}
@@ -41,10 +44,10 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-primary-900/10 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-primary-900/10 bg-[rgb(var(--color-bg)/0.92)] backdrop-blur dark:border-primary-500/20 dark:bg-[rgb(13_18_28/0.9)]">
       <Container
         as="nav"
-        className="flex items-center justify-between py-4"
+        className="flex items-center justify-between gap-4 py-4"
         aria-label="Navegacao principal"
       >
         <Link
@@ -62,14 +65,16 @@ export function Header() {
               priority
             />
           </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-semibold text-primary-500">{siteConfig.name}</span>
-            <span className="text-xs text-primary-700/80">{siteConfig.role}</span>
+          <div className="flex flex-col text-left">
+            <span className="text-sm font-semibold text-primary-500 dark:text-primary-300">
+              {siteConfig.name}
+            </span>
+            <span className="text-xs text-soft dark:text-primary-100/80">{siteConfig.role}</span>
           </div>
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
-          <ul className="flex items-center gap-6 text-sm font-medium text-primary-800">
+          <ul className="flex items-center gap-6 text-sm font-medium text-default">
             {navigation.map((item) => (
               <li key={item.href}>{renderNavLink(item.href, item.label)}</li>
             ))}
@@ -88,12 +93,13 @@ export function Header() {
               ariaLabel="Visitar perfil de Danilo no LinkedIn"
               external
             />
+            <ThemeToggle />
           </div>
         </div>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md border border-primary-500/20 px-3 py-2 text-sm font-semibold text-primary-700 lg:hidden"
+          className="inline-flex items-center justify-center rounded-md border border-primary-500/20 px-3 py-2 text-sm font-semibold text-soft transition hover:border-primary-500 hover:text-primary-500 dark:border-primary-500/40 dark:text-primary-100 dark:hover:text-primary-300 lg:hidden"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
@@ -103,23 +109,26 @@ export function Header() {
       </Container>
 
       {isOpen && (
-        <div id="mobile-menu" className="border-t border-primary-500/10 bg-white lg:hidden">
+        <div
+          id="mobile-menu"
+          className="border-t border-primary-500/10 bg-background dark:border-primary-500/20 dark:bg-[rgb(13_18_28/0.95)] lg:hidden"
+        >
           <Container className="flex flex-col gap-4 py-4">
-            <ul className="flex flex-col gap-3 text-sm font-medium text-primary-800">
+            <ul className="flex flex-col gap-3 text-sm font-medium text-default">
               {navigation.map((item) => (
                 <li key={item.href}>
                   {item.href.startsWith('#') ? (
                     <a
                       href={item.href}
-                      className="block rounded-md px-2 py-2 transition-colors hover:bg-primary-500/10"
+                      className="block rounded-md px-2 py-2 transition-colors hover:bg-primary-500/10 dark:hover:bg-primary-500/20"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.label}
                     </a>
                   ) : (
                     <Link
-                      href={item.href as Parameters<typeof Link>[0]['href']}
-                      className="block rounded-md px-2 py-2 transition-colors hover:bg-primary-500/10"
+                      href={internalHref(item.href)}
+                      className="block rounded-md px-2 py-2 transition-colors hover:bg-primary-500/10 dark:hover:bg-primary-500/20"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.label}
@@ -144,6 +153,9 @@ export function Header() {
                 className="w-full"
                 external
               />
+              <div className="flex justify-end">
+                <ThemeToggle />
+              </div>
             </div>
           </Container>
         </div>

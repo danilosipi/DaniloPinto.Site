@@ -75,19 +75,19 @@ export function ContactForm() {
     <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-6 rounded-2xl border border-primary-500/10 bg-white p-8 shadow-soft"
+        className="space-y-6 rounded-2xl border border-primary-500/10 bg-surface p-8 shadow-soft"
         aria-label="Formulario de contato"
       >
         <div className="grid gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-2">
-            <label htmlFor="name" className="text-sm font-semibold text-primary-900">
+            <label htmlFor="name" className="text-sm font-semibold text-default">
               Nome completo
             </label>
             <input
               id="name"
               type="text"
               {...register('name')}
-              className="rounded-lg border border-primary-500/20 px-4 py-2 text-sm text-primary-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
+              className="rounded-lg border border-primary-500/20 bg-background px-4 py-2 text-sm text-default shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
               placeholder="Como podemos te chamar?"
               aria-invalid={Boolean(errors.name)}
               aria-describedby={errors.name ? 'name-error' : undefined}
@@ -100,14 +100,14 @@ export function ContactForm() {
             )}
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-sm font-semibold text-primary-900">
+            <label htmlFor="email" className="text-sm font-semibold text-default">
               Email
             </label>
             <input
               id="email"
               type="email"
               {...register('email')}
-              className="rounded-lg border border-primary-500/20 px-4 py-2 text-sm text-primary-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
+              className="rounded-lg border border-primary-500/20 bg-background px-4 py-2 text-sm text-default shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
               placeholder="nome@empresa.com"
               aria-invalid={Boolean(errors.email)}
               aria-describedby={errors.email ? 'email-error' : undefined}
@@ -122,27 +122,27 @@ export function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="company" className="text-sm font-semibold text-primary-900">
+          <label htmlFor="company" className="text-sm font-semibold text-default">
             Empresa / Squad (opcional)
           </label>
           <input
             id="company"
             type="text"
             {...register('company')}
-            className="rounded-lg border border-primary-500/20 px-4 py-2 text-sm text-primary-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
+            className="rounded-lg border border-primary-500/20 bg-background px-4 py-2 text-sm text-default shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
             placeholder="Qual time quer conversar?"
           />
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="message" className="text-sm font-semibold text-primary-900">
+          <label htmlFor="message" className="text-sm font-semibold text-default">
             Mensagem
           </label>
           <textarea
             id="message"
             rows={6}
             {...register('message')}
-            className="rounded-lg border border-primary-500/20 px-4 py-3 text-sm text-primary-900 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
+            className="rounded-lg border border-primary-500/20 bg-background px-4 py-3 text-sm text-default shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
             placeholder="Compartilhe o contexto, dores atuais e o que espera evoluir."
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? 'message-error' : undefined}
@@ -164,20 +164,20 @@ export function ContactForm() {
         </button>
 
         {submitted && (
-          <div className="rounded-lg border border-primary-500/10 bg-primary-500/10 px-4 py-3 text-sm text-primary-700">
+          <div className="rounded-lg border border-primary-500/10 bg-primary-500/10 px-4 py-3 text-sm text-soft">
             Obrigado! Mensagem registrada. Em breve entro em contato.
           </div>
         )}
       </form>
 
-      <aside className="space-y-6 rounded-2xl border border-primary-500/10 bg-primary-500/5 p-8">
+      <aside className="space-y-6 rounded-2xl border border-primary-500/10 bg-[rgb(var(--color-primary-500))/0.05] p-8">
         <div className="space-y-1">
-          <h2 className="text-lg font-semibold text-primary-900">Canais diretos</h2>
-          <p className="text-sm text-primary-700/90">
+          <h2 className="text-lg font-semibold text-default">Canais diretos</h2>
+          <p className="text-sm text-soft">
             Prefere falar agora? Escolha o canal ideal e mencione que encontrou o portfolio digital.
           </p>
         </div>
-        <ul className="space-y-3 text-sm text-primary-700/90">
+        <ul className="space-y-3 text-sm text-soft">
           {directChannels.map((channel) => {
             const isExternal = channel.href.startsWith('http');
             const target = isExternal ? '_blank' : undefined;
@@ -186,9 +186,9 @@ export function ContactForm() {
             return (
               <li
                 key={channel.label}
-                className="rounded-lg border border-primary-500/20 bg-white p-3"
+                className="rounded-lg border border-primary-500/20 bg-surface p-3"
               >
-                <p className="font-semibold text-primary-900">{channel.label}</p>
+                <p className="font-semibold text-default">{channel.label}</p>
                 <a
                   href={channel.href}
                   target={target}
@@ -198,12 +198,12 @@ export function ContactForm() {
                   Acessar canal
                   <span aria-hidden>{'>'}</span>
                 </a>
-                <p className="text-xs text-primary-600/80">{channel.description}</p>
+                <p className="text-xs text-subtle">{channel.description}</p>
               </li>
             );
           })}
         </ul>
-        <div className="space-y-2 text-sm text-primary-700/90">
+        <div className="space-y-2 text-sm text-soft">
           <p>{siteConfig.phoneDisplay}</p>
           <p>{siteConfig.email}</p>
           <a

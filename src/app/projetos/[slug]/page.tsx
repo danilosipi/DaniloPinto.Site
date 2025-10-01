@@ -97,9 +97,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       />
       <div className="space-y-3">
         <span className="text-xs uppercase tracking-[0.25em] text-primary-500">Projeto</span>
-        <h1 className="text-3xl font-semibold text-primary-900 lg:text-4xl">{project.title}</h1>
-        <p className="text-primary-700/90">{project.excerpt}</p>
-        <div className="flex flex-wrap items-center gap-3 text-xs text-primary-600/80">
+        <h1 className="text-3xl font-semibold text-default lg:text-4xl">{project.title}</h1>
+        <p className="text-soft">{project.excerpt}</p>
+        <div className="flex flex-wrap items-center gap-3 text-xs text-subtle">
           <time dateTime={project.date}>{dayjs(project.date).format('DD/MM/YYYY')}</time>
           <span className="rounded-full bg-primary-500/10 px-3 py-1 uppercase tracking-wide">
             {project.status}
@@ -115,16 +115,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
 
-      <div className="prose prose-slate max-w-none">
+      <div className="prose prose-slate max-w-none dark:prose-invert">
         <MDXContent code={project.body.code} />
       </div>
 
-      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-primary-500/10 bg-white p-6 shadow-soft">
+      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-primary-500/10 bg-surface p-6 shadow-soft">
         <div className="flex-1">
-          <h2 className="text-lg font-semibold text-primary-900">
+          <h2 className="text-lg font-semibold text-default">
             Quer saber como este projeto pode ajudar a sua equipe?
           </h2>
-          <p className="text-sm text-primary-700/80">
+          <p className="text-sm text-muted">
             Vamos conversar sobre desafios de transformacao, confiabilidade ou automacao na sua
             empresa.
           </p>
