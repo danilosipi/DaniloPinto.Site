@@ -20,8 +20,7 @@ const baseClasses =
 
 const variants: Record<ButtonVariant, string> = {
   primary: 'bg-primary-500 text-white hover:bg-primary-700',
-  secondary:
-    'border border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white',
+  secondary: 'border border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white',
   ghost: 'text-primary-500 hover:text-primary-700',
   whatsapp: 'bg-[#25D366] text-black hover:bg-[#1EBE59] focus-visible:outline-[#25D366]',
   linkedin: 'bg-[#0077B5] text-white hover:bg-[#005E91] focus-visible:outline-[#0077B5]',

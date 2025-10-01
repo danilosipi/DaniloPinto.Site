@@ -27,7 +27,10 @@ export function Footer() {
           </span>
         </div>
       </Container>
-      <div className="text-center p-4" style={{ background: 'var(--section-even-bg)', color: 'var(--section-even-text)' }}>
+      <div
+        className="text-center p-4"
+        style={{ background: 'var(--section-even-bg)', color: 'var(--section-even-text)' }}
+      >
         <p>© {new Date().getFullYear()} Danilo Pinto. Todos os direitos reservados.</p>
       </div>
     </footer>

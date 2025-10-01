@@ -7,11 +7,6 @@ import { z } from 'zod';
 
 import { siteConfig } from '@/config/site';
 import { getMailtoLink, getWhatsappUrl } from '@/utils/contact';
-import { CTAButton } from '@/components/CTAButton';
-import { EmailIcon } from '@/components/icons/EmailIcon';
-import { LinkedInIcon } from '@/components/icons/LinkedInIcon';
-import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
-
 
 const contactSchema = z.object({
   name: z
@@ -35,34 +30,28 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-// type DirectChannel = {
-//   label: string;
-//   href: string;
-//   description: string;
-// };
+type DirectChannel = {
+  label: string;
+  href: string;
+  description: string;
+};
 
-const directChannels = [
+const directChannels: DirectChannel[] = [
   {
     label: 'Email',
     href: getMailtoLink('Convite para conversar'),
     description: 'Resposta em até 1 dia útil',
-    icon: <EmailIcon className="h-5 w-5" />,
-    variant: 'secondary' as const
   },
   {
     label: 'LinkedIn',
     href: siteConfig.linkedin,
     description: 'Networking, artigos e atualizações',
-    icon: <LinkedInIcon className="h-5 w-5" />,
-    variant: 'linkedin' as const
   },
   {
     label: 'WhatsApp',
     href: getWhatsappUrl('Ola Danilo, vi seu portfolio e gostaria de conversar.'),
     description: 'Mensagens rápidas e follow-ups',
-    icon: <WhatsAppIcon className="h-5 w-5" />,
-    variant: 'whatsapp' as const
-  }
+  },
 ];
 
 export function ContactForm() {
