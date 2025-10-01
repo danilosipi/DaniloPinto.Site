@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { ThemeProvider } from '@/components/ThemeProvider'; // Importado
 import { fontMono, fontSans } from '@/lib/fonts';
 import { getDefaultSeo } from '@/lib/seo';
 import { siteConfig } from '@/config/site';
@@ -25,20 +26,7 @@ const jsonLd = {
 
 const defaultSeo = getDefaultSeo();
 
-const initialThemeScript = `(() => {
-  try {
-    const storageKey = 'theme-preference';
-    const classNameDark = 'dark';
-    const stored = window.localStorage.getItem(storageKey);
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = stored || (prefersDark ? 'dark' : 'light');
-    if (theme === 'dark') {
-      document.documentElement.classList.add(classNameDark);
-    } else {
-      document.documentElement.classList.remove(classNameDark);
-    }
-  } catch (error) {}
-})();`;
+// O script de tema inicial foi removido, pois o `next-themes` gerencia isso.
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.website),
@@ -62,22 +50,27 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: initialThemeScript }} />
-      </head>
+      <head />
       <body
-        className={`${fontSans.variable} ${fontMono.variable} flex min-h-screen flex-col bg-[var(--color-bg)] text-[var(--color-text)] antialiased`}
+        className={`${fontSans.variable} ${fontMono.variable} flex min-h-screen flex-col antialiased`}
       >
-        <Header />
-        <main id="conteudo-principal" className="flex-1">
-          {children}
-        </main>
-        <Footer />
-        <script
-          type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <Header />
+          <main id="conteudo-principal" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <script
+            type="application/ld+json"
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

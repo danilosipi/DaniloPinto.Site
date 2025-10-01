@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import { Container } from '@/components/Container';
 import { CTAButton } from '@/components/CTAButton';
-import ThemeToggle from '@/components/ThemeToggle';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { siteConfig } from '@/config/site';
 import { getWhatsappUrl } from '@/utils/contact';
 

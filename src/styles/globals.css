@@ -2,121 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Root variables for light and dark themes.
+  The .dark class is used to toggle dark mode, driven by next-themes
+  and configured in tailwind.config.js.
+*/
 :root {
-  --navy: #042743;
-  --gray-dark: #2f2f2f;
-  --white: #ffffff;
-  --black: #000000;
-  --accent: #ffb84d;
-  /* CTA accent */
-}
-
-/* Light mode defaults */
-:root {
-  --bg-page: var(--white);
-  --text-page: var(--black);
-  --section-odd-bg: var(--white);
-  --section-odd-text: var(--navy);
-  --section-even-bg: var(--white);
-  --section-even-text: var(--black);
-  --btn-bg: var(--navy);
-  --btn-text: var(--white);
-  --btn-outline-text: var(--navy);
-}
-
-/* Dark mode overrides */
-:root.dark {
-  --bg-page: var(--navy);
-  --text-page: var(--white);
-  --section-odd-bg: var(--navy);
-  --section-odd-text: var(--white);
-  --section-even-bg: var(--gray-dark);
-  --section-even-text: var(--white);
-  --btn-bg: var(--accent);
-  --btn-text: var(--navy);
-  --btn-outline-text: var(--white);
-}
-
-/* Basic resets and utilities */
-body {
-  background: var(--bg-page);
-  color: var(--text-page);
-}
-
-.section {
-  padding: 3rem 1rem;
-}
-
-.section.odd {
-  background: var(--section-odd-bg);
-  color: var(--section-odd-text);
-}
-
-.section.even {
-  background: var(--section-even-bg);
-  color: var(--section-even-text);
-}
-
-/* Buttons adapt to session colors by using the CSS vars */
-.btn {
-  background: var(--btn-bg);
-  color: var(--btn-text);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--btn-outline-text);
-  border: 1px solid var(--btn-outline-text);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* Specific button overrides for contrast in odd/dark sections */
-.dark .section.odd .btn-outline {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-:root {
-  --color-primary-900: 4 39 67;
-  --color-primary-700: 6 63 97;
-  --color-primary-500: 11 105 163;
-  --color-accent: 255 184 77;
-  --color-bg: 247 249 252;
-  --color-text: 11 27 43;
-  --color-hero-bg: 252 253 255;
-  --color-section-bg: 241 245 252;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary-900: 11 26 46;
-    --color-primary-700: 24 58 102;
-    --color-primary-500: 34 86 148;
-    --color-accent: 241 178 74;
-    --color-bg: 13 18 28;
-    --color-text: 226 232 240;
-    --color-hero-bg: 13 18 28;
-    --color-section-bg: 18 24 34;
-  }
+  /* Light Mode Colors */
+  --color-primary-900: 4 39 67;    /* #042743 */
+  --color-primary-700: 6 63 97;    /* #063f61 */
+  --color-primary-500: 11 105 163; /* #0b69a3 */
+  --color-accent: 255 184 77;      /* #ffb84d */
+  --color-bg: 247 249 252;         /* #f7f9fc */
+  --color-text: 11 27 43;          /* #0b1b2b */
+  --color-section-bg: 255 255 255; /* #ffffff */
 }
 
 .dark {
-  --color-primary-900: 11 26 46;
-  --color-primary-700: 24 58 102;
-  --color-primary-500: 34 86 148;
-  --color-accent: 241 178 74;
-  --color-bg: 13 18 28;
-  --color-text: 226 232 240;
-  --color-hero-bg: 13 18 28;
-  --color-section-bg: 18 24 34;
+  /* Dark Mode Colors */
+  /* The user requested dark background is #121822 */
+  --color-primary-900: 11 26 46;    /* #0b1a2e */
+  --color-primary-700: 24 58 102;   /* #183a66 */
+  --color-primary-500: 34 86 148;   /* #225694 */
+  --color-accent: 241 178 74;      /* #f1b24a */
+  --color-bg: 18 24 34;             /* #121822 */
+  --color-text: 226 232 240;       /* #e2e8f0 */
+  --color-section-bg: 13 18 28;     /* #0d121c */
 }
 
 html {
@@ -156,7 +67,6 @@ a:focus-visible {
 }
 
 @layer base {
-
   h1,
   h2,
   h3,
@@ -171,23 +81,29 @@ a:focus-visible {
   }
 }
 
+/* Custom utility classes */
 @layer utilities {
   .bg-surface {
     @apply rounded-2xl border shadow-soft;
     border-color: rgb(var(--color-primary-500) / 0.12);
-    background-color: rgb(var(--color-bg) / 0.95);
+    /* In light mode, use a slightly off-white background for surfaces */
+    background-color: rgb(var(--color-section-bg));
   }
 
   .dark .bg-surface {
-    background-color: rgb(var(--color-bg) / 0.6);
+    /* In dark mode, use a slightly lighter background for surfaces to stand out */
+    background-color: rgb(var(--color-section-bg));
     border-color: rgb(var(--color-primary-500) / 0.25);
     color: rgb(var(--color-text));
   }
 
+  /* This is intended for the main hero section */
   .bg-hero {
-    background-color: rgb(var(--color-hero-bg));
+     /* The hero background should be the same as the body background */
+    background-color: rgb(var(--color-bg));
   }
 
+  /* This is for alternating sections */
   .bg-section {
     background-color: rgb(var(--color-section-bg));
   }

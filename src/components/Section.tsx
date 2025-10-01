@@ -1,15 +1,18 @@
 import React from 'react';
+import clsx from 'clsx';
+import { Container } from './Container';
 
-interface SectionProps {
-    index: number;
-    children: React.ReactNode;
+interface SectionProps extends React.HTMLAttributes<HTMLElement> {
+  children: React.ReactNode;
 }
 
-export default function Section({ index, children }: SectionProps) {
-    const isOdd = index % 2 === 1;
-    return (
-        <section role="region" aria-label={`Sessão ${index}`} className={`section ${isOdd ? 'odd' : 'even'}`}>
-            <div className="max-w-4xl mx-auto px-4">{children}</div>
-        </section>
-    );
+// Este componente `Section` foi refatorado para usar o sistema de temas atual.
+// No entanto, a página principal `page.tsx` usa seções manuais com classes `bg-section`.
+// Para consistência, as seções em `page.tsx` devem ser reavaliadas.
+export default function Section({ children, className, ...props }: SectionProps) {
+  return (
+    <section role="region" className={clsx('py-16', className)} {...props}>
+      <Container>{children}</Container>
+    </section>
+  );
 }

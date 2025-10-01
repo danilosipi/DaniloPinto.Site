@@ -9,7 +9,6 @@ import { heroSection, skillTags, siteConfig } from '@/config/site';
 import { getCanonicalPath, getDefaultSeo } from '@/lib/seo';
 import { getWhatsappUrl } from '@/utils/contact';
 import { allProjects } from 'contentlayer/generated';
-import Section from '@/components/Section';
 
 function sortProjects() {
   return [...allProjects].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -87,7 +86,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section id="experiencia" aria-labelledby="experiencia-heading" className="bg-section">
+      <section id="experiencia" aria-labelledby="experiencia-heading" className="bg-section py-16">
         <Container className="space-y-8">
           <div className="space-y-2">
             <h2 id="experiencia-heading" className="section-title">
@@ -102,7 +101,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section id="skills" aria-labelledby="skills-heading" className="bg-section py-16">
+      <section id="skills" aria-labelledby="skills-heading" className="py-16">
         <Container className="space-y-6">
           <div className="space-y-2">
             <h2 id="skills-heading" className="section-title">
@@ -123,7 +122,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section id="projetos" aria-labelledby="projetos-heading">
+      <section id="projetos" aria-labelledby="projetos-heading" className="bg-section py-16">
         <Container className="space-y-6">
           <div className="space-y-2">
             <h2 id="projetos-heading" className="section-title">
@@ -138,7 +137,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="bg-section py-16" aria-labelledby="conectar-heading">
+      <section aria-labelledby="conectar-heading" className="py-16">
         <Container className="grid gap-8 rounded-2xl border border-primary-500/10 bg-surface p-8 shadow-soft lg:grid-cols-[2fr_1fr] lg:items-center">
           <div className="space-y-4">
             <h2 id="conectar-heading" className="text-3xl font-semibold text-default">
@@ -167,17 +166,6 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
-
-      {Array.from({ length: 8 }).map((_, i) => (
-        <Section key={i} index={i + 1}>
-          <h2 className="text-2xl font-bold mb-2">Sessão {i + 1}</h2>
-          <p>Conteúdo de teste para verificar cores e contraste nesta sessão.</p>
-          <div className="mt-4 space-x-2">
-            <button className="btn">Botão Principal</button>
-            <button className="btn-outline">Botão Secundário</button>
-          </div>
-        </Section>
-      ))}
     </div>
   );
 }
