@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Root variables for light and dark themes.
+  The .dark class is used to toggle dark mode, driven by next-themes
+  and configured in tailwind.config.js.
+*/
+:root {
+  /* Light Mode Colors */
+  --color-primary-900: 4 39 67;    /* #042743 */
+  --color-primary-700: 6 63 97;    /* #063f61 */
+  --color-primary-500: 11 105 163; /* #0b69a3 */
+  --color-accent: 255 184 77;      /* #ffb84d */
+  --color-bg: 247 249 252;         /* #f7f9fc */
+  --color-text: 11 27 43;          /* #0b1b2b */
+  --color-section-bg: 255 255 255; /* #ffffff */
+}
+
+.dark {
+  /* Dark Mode Colors */
+  /* The user requested dark background is #121822 */
+  --color-primary-900: 11 26 46;    /* #0b1a2e */
+  --color-primary-700: 24 58 102;   /* #183a66 */
+  --color-primary-500: 34 86 148;   /* #225694 */
+  --color-accent: 241 178 74;      /* #f1b24a */
+  --color-bg: 18 24 34;             /* #121822 */
+  --color-text: 226 232 240;       /* #e2e8f0 */
+  --color-section-bg: 13 18 28;     /* #0d121c */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: rgb(var(--color-bg));
+  color: rgb(var(--color-text));
+  font-family:
+    var(--font-sans),
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  line-height: 1.65;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  color: rgb(var(--color-primary-500));
+}
+
+::selection {
+  background-color: rgb(var(--color-primary-500));
+  color: #ffffff;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .bg-surface {
+    @apply rounded-2xl border shadow-soft;
+    border-color: rgb(var(--color-primary-500) / 0.12);
+    /* In light mode, use a slightly off-white background for surfaces */
+    background-color: rgb(var(--color-section-bg));
+  }
+
+  .dark .bg-surface {
+    /* In dark mode, use a slightly lighter background for surfaces to stand out */
+    background-color: rgb(var(--color-section-bg));
+    border-color: rgb(var(--color-primary-500) / 0.25);
+    color: rgb(var(--color-text));
+  }
+
+  /* This is intended for the main hero section */
+  .bg-hero {
+     /* The hero background should be the same as the body background */
+    background-color: rgb(var(--color-bg));
+  }
+
+  /* This is for alternating sections */
+  .bg-section {
+    background-color: rgb(var(--color-section-bg));
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight;
+    color: rgb(var(--color-text));
+  }
+
+  .section-subtitle {
+    @apply text-base;
+    color: rgb(var(--color-text) / 0.72);
+  }
+
+  .text-default {
+    color: rgb(var(--color-text));
+  }
+
+  .text-soft {
+    color: rgb(var(--color-text) / 0.88);
+  }
+
+  .text-muted {
+    color: rgb(var(--color-text) / 0.72);
+  }
+
+  .text-subtle {
+    color: rgb(var(--color-text) / 0.6);
+  }
+
+  .text-faint {
+    color: rgb(var(--color-text) / 0.5);
+  }
+}
