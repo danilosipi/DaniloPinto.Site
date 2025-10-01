@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
+
 import { allProjects } from 'contentlayer/generated';
 import { getCanonicalPath } from '@/lib/seo';
 
