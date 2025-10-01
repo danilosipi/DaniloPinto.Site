@@ -26,7 +26,10 @@ export function InfoSection({ title, items, layout = 'list' }: InfoSectionProps)
         })}
       >
         {items.map((item, index) => (
-          <div key={index} className="flex flex-col rounded-2xl border border-primary-500/10 bg-surface p-6 shadow-soft">
+          <div
+            key={index}
+            className="flex flex-col rounded-2xl border border-primary-500/10 bg-surface p-6 shadow-soft"
+          >
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-default">{item.title}</h3>
               <span className="text-sm font-medium text-muted">{item.period}</span>

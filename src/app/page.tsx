@@ -99,7 +99,14 @@ export default function HomePage() {
       </section>
 
       <div className="text-center text-sm text-muted">
-        <span>Última atualização em: {new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+        <span>
+          Última atualização em:{' '}
+          {new Date().toLocaleDateString('pt-BR', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          })}
+        </span>
       </div>
 
       <section id="experiencia" aria-labelledby="experiencia-heading" className="bg-section py-16">

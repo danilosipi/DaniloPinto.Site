@@ -16,9 +16,11 @@ export const siteConfig = {
     keywords: [
       'Danilo Pinto',
       'transformacao digital',
-      'resseguros', 'capitalizacao',
+      'resseguros',
+      'capitalizacao',
       'automacao de processos',
-      'SRE', 'gerente de sistemas',
+      'SRE',
+      'gerente de sistemas',
       'engenharia de software',
       'consultoria tecnologia',
       'delivery manager',
@@ -28,7 +30,8 @@ export const siteConfig = {
 };
 
 export const heroSection = {
-  headline: 'Transformando sistemas críticos em plataformas confiáveis através da liderança de pessoas',
+  headline:
+    'Transformando sistemas críticos em plataformas confiáveis através da liderança de pessoas',
   subheadline:
     '+15 anos unindo tecnologia e pessoas para transformar sistemas em resultados de negócio.',
   bio: 'Especialista na gestão de sistemas e transformação digital. Atuei em projetos estratégicos como a criação do ERP de Capitalização e a reestruturação do sistema de Resseguros entregando estabilidade, escalabilidade e valor ao negócio. Minha jornada é marcada por liderança de equipes ágeis, excelência em engenharia e foco em resultados reais.',
@@ -78,7 +81,7 @@ export const corporateExperience: ExperienceItem[] = [
       'Formei e desenvolvi equipes multifuncionais, promovendo autonomia, cultura de melhoria contínua e capacitação em tecnologia e negócios (resseguros).',
       'Apliquei práticas modernas de engenharia (SOLID, Design Patterns, testes automatizados, CI/CD, containers) para garantir qualidade contínua, estabilidade e escalabilidade das soluções.',
       'Atuei como ponte entre tecnologia e negócios, apresentando reports executivos, traduzindo complexidade técnica em insights estratégicos e acelerando a tomada de decisão.',
-      'Automatizei processos com SQL e Python, além de atuar em sustentação e correção de sistemas em C#, aumentando eficiência operacional.'
+      'Automatizei processos com SQL e Python, além de atuar em sustentação e correção de sistemas em C#, aumentando eficiência operacional.',
     ],
   },
   {
@@ -98,30 +101,30 @@ export const corporateExperience: ExperienceItem[] = [
 ];
 
 export const skillTags = [
-  'Transformação Digital'
-  , 'Automação de Processos'
-  , 'SRE e Observabilidade'
-  , 'Gestão de Squads Ágeis (Scrum, SAFe, Kanban)'
-  , 'Arquitetura .NET'
-  , 'Microsserviços'
-  , 'Python'
-  , 'Data Engineering'
-  , 'SQL'
-  , 'Bancos Relacionais (SQL Server, Oracle, MongoDB)'
-  , 'CI/CD e DevOps (Azure DevOps, GitHub Actions, Jenkins)'
-  , 'Cloud AWS'
-  , 'Azure'
-  , 'Integração de Sistemas'
-  , 'APIs'
-  , 'Boas Práticas de Engenharia (SOLID, Design Patterns, TDD/BDD)'
-  , 'Governança de TI'
-  , 'Auditoria'
-  , 'Compliance'
-  , 'Gestão de Clientes Estratégicos e Stakeholders'
-  , 'Liderança Técnica'
-  , 'Mentoria de Equipes'
-  , 'Inteligência Artificial Generativa'
-  , 'Automação Inteligente'
+  'Transformação Digital',
+  'Automação de Processos',
+  'SRE e Observabilidade',
+  'Gestão de Squads Ágeis (Scrum, SAFe, Kanban)',
+  'Arquitetura .NET',
+  'Microsserviços',
+  'Python',
+  'Data Engineering',
+  'SQL',
+  'Bancos Relacionais (SQL Server, Oracle, MongoDB)',
+  'CI/CD e DevOps (Azure DevOps, GitHub Actions, Jenkins)',
+  'Cloud AWS',
+  'Azure',
+  'Integração de Sistemas',
+  'APIs',
+  'Boas Práticas de Engenharia (SOLID, Design Patterns, TDD/BDD)',
+  'Governança de TI',
+  'Auditoria',
+  'Compliance',
+  'Gestão de Clientes Estratégicos e Stakeholders',
+  'Liderança Técnica',
+  'Mentoria de Equipes',
+  'Inteligência Artificial Generativa',
+  'Automação Inteligente',
 ];
 
 export interface InfoItem {
@@ -148,8 +151,7 @@ export const academicExperience: InfoItem[] = [
     period: '2007 - 2011',
     description:
       'Foco em desenvolvimento e engenharia de software, com base sólida em lógica e algoritmos e experiência em gestão de projetos. No projeto de TCC, desenvolvi e implementei um sistema de gerenciamento de reuniões para o IPEN (Instituto de Pesquisas Energéticas e Nucleares), que automatizava a geração de pautas e atas.',
-  }
-
+  },
 ];
 
 export const coursesExperience: InfoItem[] = [
@@ -158,41 +160,47 @@ export const coursesExperience: InfoItem[] = [
     title: 'Programa de Formação Executiva em Liderança',
     institution: 'Bússola Executiva',
     period: '2024',
-    description: 'Destinado a líderes e gestores, o curso aborda temas como autoconhecimento, comunicação eficaz, gestão de equipes, resolução de conflitos e tomada de decisão estratégica, com foco em desenvolver habilidades essenciais para liderar com sucesso em ambientes corporativos dinâmicos.',
+    description:
+      'Destinado a líderes e gestores, o curso aborda temas como autoconhecimento, comunicação eficaz, gestão de equipes, resolução de conflitos e tomada de decisão estratégica, com foco em desenvolver habilidades essenciais para liderar com sucesso em ambientes corporativos dinâmicos.',
   },
   {
     logo: '/images/logos/pucrs.jpg',
     title: 'Liderança e Gestão de Equipes de Alta Performance',
     institution: 'PUCRS',
     period: '2021',
-    description: 'Curso focado em desenvolver habilidades de liderança, comunicação e gestão de equipes, abordando temas como motivação, resolução de conflitos e estratégias para alcançar alta performance em ambientes corporativos.',
+    description:
+      'Curso focado em desenvolver habilidades de liderança, comunicação e gestão de equipes, abordando temas como motivação, resolução de conflitos e estratégias para alcançar alta performance em ambientes corporativos.',
   },
   {
     logo: '/images/logos/saintpaul.jpg',
     title: 'Resseguro, Cosseguro e Gestão de Riscos',
     institution: 'Saint Paul Escola de Negócios',
     period: '2021',
-    description: 'Curso abrangente sobre os fundamentos do resseguro e cosseguro, incluindo tipos de contratos, avaliação de riscos e estratégias de mitigação, voltado para profissionais do setor de seguros que buscam aprofundar seus conhecimentos técnicos e práticos na área.',
+    description:
+      'Curso abrangente sobre os fundamentos do resseguro e cosseguro, incluindo tipos de contratos, avaliação de riscos e estratégias de mitigação, voltado para profissionais do setor de seguros que buscam aprofundar seus conhecimentos técnicos e práticos na área.',
   },
   {
     logo: '/images/logos/idesp.jpg',
     title: 'Segurança de Aplicações e Desenvolvimento Seguro',
     institution: 'Instituto de Desenvolvimento Educacional e Profissional (IDESP)',
     period: '2021',
-    description: 'Curso abrangente sobre os fundamentos da segurança de aplicações e desenvolvimento seguro, incluindo práticas recomendadas, avaliação de vulnerabilidades e estratégias de mitigação, voltado para profissionais que buscam aprimorar suas habilidades na área.',
+    description:
+      'Curso abrangente sobre os fundamentos da segurança de aplicações e desenvolvimento seguro, incluindo práticas recomendadas, avaliação de vulnerabilidades e estratégias de mitigação, voltado para profissionais que buscam aprimorar suas habilidades na área.',
   },
   {
     logo: '/images/logos/mack.jpg',
     title: 'Gestão de Equipes Remotas e Híbridas',
     institution: 'Mackenzie',
     period: '2020',
-    description: 'Curso abrangente sobre os fundamentos da gestão de equipes remotas e híbridas, incluindo práticas recomendadas, ferramentas de colaboração e estratégias de engajamento, voltado para profissionais que buscam aprimorar suas habilidades na área.',
+    description:
+      'Curso abrangente sobre os fundamentos da gestão de equipes remotas e híbridas, incluindo práticas recomendadas, ferramentas de colaboração e estratégias de engajamento, voltado para profissionais que buscam aprimorar suas habilidades na área.',
   },
   {
     logo: '/images/logos/certiprof.jpg',
     title: 'Scrum Foundation Professional Certificate (SFPC)',
     institution: 'CertiProf',
     period: '2020',
-    description: 'Curso abrangente sobre os fundamentos do Scrum, incluindo práticas recomendadas, papéis e responsabilidades, e estratégias de implementação, voltado para profissionais que buscam aprimorar suas habilidades na área.',
+    description:
+      'Curso abrangente sobre os fundamentos do Scrum, incluindo práticas recomendadas, papéis e responsabilidades, e estratégias de implementação, voltado para profissionais que buscam aprimorar suas habilidades na área.',
   },
 ];
