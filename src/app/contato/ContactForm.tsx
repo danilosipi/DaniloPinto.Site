@@ -5,15 +5,19 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { siteConfig } from '@/config/site';
+import { getMailtoLink, getWhatsappUrl } from '@/utils/contact';
 import { CTAButton } from '@/components/CTAButton';
 import { EmailIcon } from '@/components/icons/EmailIcon';
 import { LinkedInIcon } from '@/components/icons/LinkedInIcon';
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
-import { siteConfig } from '@/config/site';
-import { getMailtoLink, getWhatsappUrl } from '@/utils/contact';
+
 
 const contactSchema = z.object({
-  name: z.string().min(2, 'Informe seu nome completo para seguirmos').max(80, 'Use no maximo 80 caracteres'),
+  name: z
+    .string()
+    .min(2, 'Informe seu nome completo para seguirmos')
+    .max(80, 'Use no maximo 80 caracteres'),
   email: z.string().email('Informe um email valido'),
   company: z.string().optional(),
   message: z
@@ -24,28 +28,34 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
+// type DirectChannel = {
+//   label: string;
+//   href: string;
+//   description: string;
+// };
+
 const directChannels = [
   {
-    label: 'WhatsApp',
-    href: getWhatsappUrl('Ola Danilo, vi seu portfolio e gostaria de conversar.'),
-    description: 'Mensagens rapidas e follow-ups',
-    icon: <WhatsAppIcon className="h-5 w-5" />,
-    variant: 'whatsapp' as const,
+    label: 'Email',
+    href: getMailtoLink('Convite para conversar'),
+    description: 'Resposta em até 1 dia útil',
+    icon: <EmailIcon className="h-5 w-5" />,
+    variant: 'secondary' as const
   },
   {
     label: 'LinkedIn',
     href: siteConfig.linkedin,
-    description: 'Networking, artigos e atualizacoes',
+    description: 'Networking, artigos e atualizações',
     icon: <LinkedInIcon className="h-5 w-5" />,
-    variant: 'linkedin' as const,
+    variant: 'linkedin' as const
   },
   {
-    label: 'Email',
-    href: getMailtoLink('Convite para conversar'),
-    description: 'Resposta em ate 1 dia util',
-    icon: <EmailIcon className="h-5 w-5" />,
-    variant: 'secondary' as const,
-  },
+    label: 'WhatsApp',
+    href: getWhatsappUrl('Ola Danilo, vi seu portfolio e gostaria de conversar.'),
+    description: 'Mensagens rápidas e follow-ups',
+    icon: <WhatsAppIcon className="h-5 w-5" />,
+    variant: 'whatsapp' as const
+  }
 ];
 
 export function ContactForm() {
@@ -197,29 +207,50 @@ export function ContactForm() {
         )}
       </form>
 
-      <aside className="space-y-6 rounded-2xl border-primary-500/10 bg-[rgb(var(--color-primary-500))/0.05] p-8">
+      <aside className="space-y-6 rounded-2xl border border-primary-500/40 bg-[rgb(var(--color-primary-500))/0.05] p-8">
         <div className="space-y-1">
           <h2 className="text-lg font-semibold text-default">Canais diretos</h2>
           <p className="text-sm text-soft">
             Prefere falar agora? Escolha o canal ideal e mencione que encontrou o portfolio digital.
           </p>
         </div>
-        <div className="flex flex-col gap-3">
-          {directChannels.map((channel) => (
-            <CTAButton
-              key={channel.label}
-              href={channel.href}
-              label={channel.label}
-              variant={channel.variant}
-              icon={channel.icon}
-              external
-              className="w-full !justify-start"
-            />
-          ))}
-        </div>
-        <div className="space-y-2 border-t border-primary-500/10 pt-4 text-sm text-soft">
+        <ul className="space-y-3 text-sm text-soft">
+          {directChannels.map((channel) => {
+            const isExternal = channel.href.startsWith('http');
+            const target = isExternal ? '_blank' : undefined;
+            const rel = isExternal ? 'noreferrer noopener' : undefined;
+
+            return (
+              <li
+                key={channel.label}
+                className="rounded-lg border border-primary-500/20 bg-surface p-3"
+              >
+                <p className="font-semibold text-default">{channel.label}</p>
+                <a
+                  href={channel.href}
+                  target={target}
+                  rel={rel}
+                  className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-primary-500 hover:text-primary-700"
+                >
+                  Acessar canal
+                  <span aria-hidden>{'>'}</span>
+                </a>
+                <p className="text-xs text-subtle">{channel.description}</p>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="space-y-2 text-sm text-soft">
           <p>{siteConfig.phoneDisplay}</p>
           <p>{siteConfig.email}</p>
+          <a
+            href={siteConfig.linkedin}
+            className="text-primary-500 hover:text-primary-700"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            LinkedIn
+          </a>
         </div>
       </aside>
     </div>

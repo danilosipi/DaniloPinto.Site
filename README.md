@@ -1,5 +1,3 @@
-# Bem vindo ao meu Git, 👋 Olá
-
 # Curriculo Digital - Danilo Pinto
 
 Portfolio em Next.js (App Router com TypeScript) para apresentar experiencias corporativas, projetos e canais de contato do Danilo Pinto.
@@ -9,22 +7,24 @@ Portfolio em Next.js (App Router com TypeScript) para apresentar experiencias co
 - Next.js 15
 - TypeScript
 - Tailwind CSS 3
+- **next-themes** (gerenciamento de tema dark/light)
+- **nodemailer** (envio de e-mail pelo formulário de contato)
 - Contentlayer 2 (MDX)
 - React Hook Form + Zod
 - PNPM
 
-## Pre-requisitos
+## Pré-requisitos
 
 - Node.js 18 ou 20
 - PNPM 8+
 
-## Instalacao
+## Instalação
 
 ```bash
 pnpm install
 ```
 
-# Comandos principais
+## Comandos Principais
 
 ```bash
 pnpm contentlayer:build   # gera tipagens a partir dos MDX
@@ -42,9 +42,9 @@ pnpm format               # ajusta codigo com Prettier
 - Inspecionar uso da porta: `netstat -ano | findstr :3000`
 - Para encerrar (somente se autorizado): `taskkill /PID <PID> /F`
 
-## Estrutura resumida
+## Estrutura Resumida
 
-```
+```env
 src/
   app/
     projetos/[slug]/page.tsx    # project detail via Contentlayer
@@ -63,13 +63,38 @@ public/
   images/                       # headshot e capas temporarias
 ```
 
-## Conteudo dinamico (Contentlayer)
+## Configuração do Ambiente
+
+Para que o formulário de contato envie e-mails, é necessário configurar as credenciais do seu servidor de e-mail. Crie um arquivo chamado `.env.local` na raiz do projeto e adicione as seguintes variáveis:
+
+```env
+# Configuração do Servidor de Email (SMTP)
+EMAIL_SERVER_HOST=smtp.example.com
+EMAIL_SERVER_PORT=465
+EMAIL_SERVER_USER=seu-email@example.com
+EMAIL_SERVER_PASSWORD=sua-senha-de-email-ou-app
+
+# E-mail que receberá as mensagens do formulário
+EMAIL_TO=email-onde-voce-quer-receber@example.com
+```
+
+**Nota:** Se você usa Gmail ou Outlook com verificação em duas etapas, precisa gerar uma **"Senha de App"** e usá-la no campo `EMAIL_SERVER_PASSWORD`.
+
+Após salvar o arquivo, reinicie o servidor de desenvolvimento.
+
+## Funcionalidades e Decisões
+
+- **Theming:** O sistema de temas (dark/light) é gerenciado pelo `next-themes` e as cores são aplicadas globalmente via variáveis CSS em `src/styles/globals.css`.
+- **Componentes de Botão:** O `CTAButton` foi refatorado para suportar variantes de marca (WhatsApp, LinkedIn) e renderizar botões apenas com ícones de forma inteligente.
+- **Envio de E-mail:** O formulário de contato utiliza uma rota de API (`/api/contact`) que valida os dados no servidor e usa o `nodemailer` para enviar o e-mail de forma segura.
+
+## Conteudo Dinamico (Contentlayer)
 
 - Projetos ficam em `src/content/projects/*.mdx` com campos `title`, `slug`, `excerpt`, `date`, `tags`, `status`, `coverImage`.
 - Status aceitos: `active`, `completed`, `prototype`.
 - Rode `pnpm contentlayer:build` sempre que criar ou editar MDX.
 
-## Customizacao rapida
+## Customizacao Rapida
 
 - Ajuste dados em `src/config/site.ts` (hero, timeline, skills, canais).
 - Substitua imagens em `public/images/**` por assets reais.
@@ -94,18 +119,12 @@ public/
 3. Output: `.next`
 4. Variaveis opcionais: `NEXT_PUBLIC_ANALYTICS_ID` (GA4) ou `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`
 
-### Anotacoes sobre analytics
+### Anotacoes sobre Analytics
 
 - GA4: inserir script global ou usar biblioteca oficial quando for homologado.
 - Plausible: incluir `<script data-domain="seu-dominio" src="https://plausible.io/js/script.js" defer></script>` no layout.
 
-## Proximos passos sugeridos
-
-- Substituir placeholders por dados e images definitivos.
-- Adicionar novos projetos MDX com status e tags.
-- Configurar deploy preview na Vercel e validar SEO/performance.
-
-## SEO e indexacao
+## SEO e Indexacao
 
 - Metadata padrao configurada via `siteConfig.seo` (consumida em `src/lib/seo.ts`).
 - Rotas principais expostas em `src/app/robots.ts` e `src/app/sitemap.ts` (inclui projetos dinamicos).
