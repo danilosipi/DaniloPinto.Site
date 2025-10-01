@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { corporateExperience, ExperienceItem } from '@/config/site';
 
 const typeLabels: Record<ExperienceItem['type'], string> = {
@@ -22,9 +24,20 @@ export function ExperienceTimeline() {
               </div>
               <span className="text-sm font-medium text-muted">{experience.period}</span>
             </div>
-            <p className="mt-1 text-sm text-subtle">
-              {experience.company} - {experience.location}
-            </p>
+            <div className="mt-2 flex items-center gap-3">
+              {experience.logo && (
+                <Image
+                  src={experience.logo}
+                  alt={`Logo da ${experience.company}`}
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 rounded-full object-contain"
+                />
+              )}
+              <p className="text-sm text-subtle">
+                {experience.company} - {experience.location}
+              </p>
+            </div>
             <ul className="mt-4 list-inside space-y-2 text-sm text-soft">
               {experience.achievements.map((achievement) => (
                 <li key={achievement} className="flex gap-2">

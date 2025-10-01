@@ -7,7 +7,14 @@ import { ExperienceTimeline } from '@/components/ExperienceTimeline';
 import { ProjectsGallery } from '@/components/ProjectsGallery';
 import { LinkedInIcon } from '@/components/icons/LinkedInIcon';
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
-import { heroSection, skillTags, siteConfig } from '@/config/site';
+import {
+  academicExperience,
+  coursesExperience,
+  heroSection,
+  skillTags,
+  siteConfig,
+} from '@/config/site';
+import { InfoSection } from '@/components/InfoSection';
 import { getCanonicalPath, getDefaultSeo } from '@/lib/seo';
 import { getWhatsappUrl } from '@/utils/contact';
 import { allProjects } from 'contentlayer/generated';
@@ -77,13 +84,13 @@ export default function HomePage() {
               className="absolute inset-4 rounded-[36px] bg-primary-500/10 blur-3xl"
               aria-hidden
             />
-            <div className="relative mx-auto h-80 w-80 overflow-hidden rounded-[32px] border border-primary-500/10 bg-surface shadow-soft">
+            <div className="relative mx-auto h-96 w-96 overflow-hidden rounded-[32px] border border-primary-500/10 bg-surface shadow-soft">
               <Image
                 src="/images/headshot-placeholder.jpg"
                 alt={`Foto profissional de ${siteConfig.name}`}
                 fill
                 className="object-cover"
-                sizes="320px"
+                sizes="600px"
                 priority
               />
             </div>
@@ -91,11 +98,15 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <div className="text-center text-sm text-muted">
+        <span>Última atualização em: {new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+      </div>
+
       <section id="experiencia" aria-labelledby="experiencia-heading" className="bg-section py-16">
         <Container className="space-y-8">
           <div className="space-y-2">
             <h2 id="experiencia-heading" className="section-title">
-              Experiencia corporativa
+              Experiencia Corporativa
             </h2>
             <p className="section-subtitle">
               Programas liderados em seguradoras, consultorias e laboratorios de inovacao, com foco
@@ -105,6 +116,13 @@ export default function HomePage() {
           <ExperienceTimeline />
         </Container>
       </section>
+
+      <Container>
+        <div className="space-y-16">
+          <InfoSection title="Formação Acadêmica" items={academicExperience} layout="grid" />
+          <InfoSection title="Cursos e Especializações" items={coursesExperience} layout="grid" />
+        </div>
+      </Container>
 
       <section id="skills" aria-labelledby="skills-heading" className="py-16">
         <Container className="space-y-6">

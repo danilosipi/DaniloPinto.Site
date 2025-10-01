@@ -9,25 +9,39 @@
 */
 :root {
   /* Light Mode Colors */
-  --color-primary-900: 4 39 67; /* #042743 */
-  --color-primary-700: 6 63 97; /* #063f61 */
-  --color-primary-500: 11 105 163; /* #0b69a3 */
-  --color-accent: 255 184 77; /* #ffb84d */
-  --color-bg: 247 249 252; /* #f7f9fc */
-  --color-text: 11 27 43; /* #0b1b2b */
-  --color-section-bg: 255 255 255; /* #ffffff */
+  --color-primary-900: 4 39 67;
+  /* #042743 */
+  --color-primary-700: 6 63 97;
+  /* #063f61 */
+  --color-primary-500: 11 105 163;
+  /* #0b69a3 */
+  --color-accent: 255 184 77;
+  /* #ffb84d */
+  --color-bg: 230 230 230;
+  /* #f7f9fc */
+  --color-text: 11 27 43;
+  /* #0b1b2b */
+  --color-section-bg: 240 240 240;
+  /* #f0f0f0 */
 }
 
 .dark {
   /* Dark Mode Colors */
   /* The user requested dark background is #121822 */
-  --color-primary-900: 11 26 46; /* #0b1a2e */
-  --color-primary-700: 24 58 102; /* #183a66 */
-  --color-primary-500: 34 86 148; /* #225694 */
-  --color-accent: 241 178 74; /* #f1b24a */
-  --color-bg: 18 24 34; /* #121822 */
-  --color-text: 226 232 240; /* #e2e8f0 */
-  --color-section-bg: 13 18 28; /* #0d121c */
+  --color-primary-900: 11 26 46;
+  /* #0b1a2e */
+  --color-primary-700: 24 58 102;
+  /* #183a66 */
+  --color-primary-500: 34 86 148;
+  /* #225694 */
+  --color-accent: 241 178 74;
+  /* #f1b24a */
+  --color-bg: 18 24 34;
+  /* #121822 */
+  --color-text: 226 232 240;
+  /* #e2e8f0 */
+  --color-section-bg: 13 18 28;
+  /* #0d121c */
 }
 
 html {
@@ -67,6 +81,7 @@ a:focus-visible {
 }
 
 @layer base {
+
   h1,
   h2,
   h3,
