@@ -7,48 +7,67 @@ import { z } from 'zod';
 
 import { siteConfig } from '@/config/site';
 import { getMailtoLink, getWhatsappUrl } from '@/utils/contact';
+import { CTAButton } from '@/components/CTAButton';
+import { EmailIcon } from '@/components/icons/EmailIcon';
+import { LinkedInIcon } from '@/components/icons/LinkedInIcon';
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
+
 
 const contactSchema = z.object({
   name: z
     .string()
-    .min(2, 'Informe seu nome completo para seguirmos')
-    .max(80, 'Use no maximo 80 caracteres'),
-  email: z.string().email('Informe um email valido'),
-  company: z.string().optional(),
-  message: z
+    .min(3, 'Nome muito curto.')
+    .regex(/(\w.+\s).+/, 'Por favor, informe seu nome completo.')
+    .regex(/^[a-zA-Z\s]+$/, 'O nome deve conter apenas letras e espaços.'),
+  email: z
     .string()
-    .min(10, 'Compartilhe um pouco mais sobre o desafio ou oportunidade')
-    .max(1000, 'Mensagem muito longa, tente resumir em ate 1000 caracteres'),
+    .email('Informe um email válido.')
+    .refine(
+      (e) => !['email@email.com', 'test@test.com', 'example@example.com'].includes(e.toLowerCase()),
+      'Por favor, use um endereço de e-mail real.',
+    ),
+  company: z
+    .string()
+    .min(2, 'O nome da empresa é obrigatório.')
+    .refine((c) => c.toLowerCase() !== 'empresa', 'Por favor, insira um nome de empresa válido.'),
+  message: z.string().min(30, 'Por favor, detalhe um pouco mais sua mensagem.').max(1000),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-type DirectChannel = {
-  label: string;
-  href: string;
-  description: string;
-};
+// type DirectChannel = {
+//   label: string;
+//   href: string;
+//   description: string;
+// };
 
-const directChannels: DirectChannel[] = [
+const directChannels = [
   {
     label: 'Email',
     href: getMailtoLink('Convite para conversar'),
-    description: 'Resposta em ate 1 dia util',
+    description: 'Resposta em até 1 dia útil',
+    icon: <EmailIcon className="h-5 w-5" />,
+    variant: 'secondary' as const
   },
   {
     label: 'LinkedIn',
     href: siteConfig.linkedin,
-    description: 'Networking, artigos e atualizacoes',
+    description: 'Networking, artigos e atualizações',
+    icon: <LinkedInIcon className="h-5 w-5" />,
+    variant: 'linkedin' as const
   },
   {
     label: 'WhatsApp',
     href: getWhatsappUrl('Ola Danilo, vi seu portfolio e gostaria de conversar.'),
-    description: 'Mensagens rapidas e follow-ups',
-  },
+    description: 'Mensagens rápidas e follow-ups',
+    icon: <WhatsAppIcon className="h-5 w-5" />,
+    variant: 'whatsapp' as const
+  }
 ];
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const {
     register,
@@ -65,10 +84,29 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = (data: ContactFormData) => {
-    console.info('Contato simulado enviado:', data);
-    setSubmitted(true);
-    reset();
+  const onSubmit = async (data: ContactFormData) => {
+    setSubmitted(false);
+    setServerError(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Falha ao enviar a mensagem.');
+      }
+
+      setSubmitted(true);
+      reset();
+    } catch (error) {
+      setServerError(error instanceof Error ? error.message : 'Ocorreu um erro inesperado.');
+    }
   };
 
   return (
@@ -88,7 +126,7 @@ export function ContactForm() {
               type="text"
               {...register('name')}
               className="rounded-lg border border-primary-500/20 bg-background px-4 py-2 text-sm text-default shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30"
-              placeholder="Como podemos te chamar?"
+              placeholder="Como posso te chamar?"
               aria-invalid={Boolean(errors.name)}
               aria-describedby={errors.name ? 'name-error' : undefined}
               required
@@ -123,7 +161,7 @@ export function ContactForm() {
 
         <div className="flex flex-col gap-2">
           <label htmlFor="company" className="text-sm font-semibold text-default">
-            Empresa / Squad (opcional)
+            Empresa / Squad
           </label>
           <input
             id="company"
@@ -157,20 +195,26 @@ export function ContactForm() {
 
         <button
           type="submit"
-          className="inline-flex w-full items-center justify-center rounded-md bg-[var(--color-primary-500)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-primary-700)] disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex w-full items-center justify-center rounded-md bg-primary-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-70"
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
         </button>
 
         {submitted && (
-          <div className="rounded-lg border border-primary-500/10 bg-primary-500/10 px-4 py-3 text-sm text-soft">
-            Obrigado! Mensagem registrada. Em breve entro em contato.
+          <div className="rounded-lg border border-green-500/20 bg-green-500/10 px-4 py-3 text-sm text-green-700 dark:text-green-300">
+            Obrigado! Sua mensagem foi enviada com sucesso. Em breve entro em contato.
+          </div>
+        )}
+
+        {serverError && (
+          <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-700 dark:text-red-300">
+            {serverError}
           </div>
         )}
       </form>
 
-      <aside className="space-y-6 rounded-2xl border border-primary-500/10 bg-[rgb(var(--color-primary-500))/0.05] p-8">
+      <aside className="space-y-6 rounded-2xl border border-primary-500/40 bg-[rgb(var(--color-primary-500))/0.05] p-8">
         <div className="space-y-1">
           <h2 className="text-lg font-semibold text-default">Canais diretos</h2>
           <p className="text-sm text-soft">

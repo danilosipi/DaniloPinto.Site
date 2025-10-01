@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { ContactForm } from '@/app/contato/ContactForm';
 import { CTAButton } from '@/components/CTAButton';
 import { Container } from '@/components/Container';
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 import { getCanonicalPath, getDefaultSeo } from '@/lib/seo';
 import { getMailtoLink, getWhatsappUrl } from '@/utils/contact';
 
@@ -47,6 +48,8 @@ export default function ContactPage() {
               )}
               label="Conversar via WhatsApp"
               ariaLabel="Abrir conversa comigo no WhatsApp"
+              variant="whatsapp"
+              icon={<WhatsAppIcon />}
               external
             />
             <CTAButton

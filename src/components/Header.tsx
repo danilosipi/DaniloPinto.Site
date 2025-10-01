@@ -7,6 +7,8 @@ import { useState } from 'react';
 import { Container } from '@/components/Container';
 import { CTAButton } from '@/components/CTAButton';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { LinkedInIcon } from '@/components/icons/LinkedInIcon';
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 import { siteConfig } from '@/config/site';
 import { getWhatsappUrl } from '@/utils/contact';
 
@@ -82,15 +84,16 @@ export function Header() {
           <div className="flex items-center gap-3">
             <CTAButton
               href={getWhatsappUrl()}
-              label="Falar no WhatsApp"
-              ariaLabel="Abrir conversa com Danilo no WhatsApp"
+              ariaLabel="Abrir conversa comigo no WhatsApp"
+              variant="whatsapp"
+              icon={<WhatsAppIcon className="h-5 w-5" />}
               external
             />
             <CTAButton
               href={siteConfig.linkedin}
-              label="LinkedIn"
-              variant="secondary"
-              ariaLabel="Visitar perfil de Danilo no LinkedIn"
+              ariaLabel="Visitar meu perfil no LinkedIn"
+              variant="linkedin"
+              icon={<LinkedInIcon className="h-5 w-5" />}
               external
             />
             <ThemeToggle />
@@ -142,14 +145,17 @@ export function Header() {
                 href={getWhatsappUrl()}
                 label="Conversar no WhatsApp"
                 ariaLabel="Abrir conversa com Danilo no WhatsApp"
+                variant="whatsapp"
+                icon={<WhatsAppIcon />}
                 className="w-full"
                 external
               />
               <CTAButton
                 href={siteConfig.linkedin}
                 label="LinkedIn"
-                variant="secondary"
                 ariaLabel="Visitar perfil de Danilo no LinkedIn"
+                variant="linkedin"
+                icon={<LinkedInIcon />}
                 className="w-full"
                 external
               />

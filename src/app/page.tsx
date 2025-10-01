@@ -5,6 +5,8 @@ import { CTAButton } from '@/components/CTAButton';
 import { Container } from '@/components/Container';
 import { ExperienceTimeline } from '@/components/ExperienceTimeline';
 import { ProjectsGallery } from '@/components/ProjectsGallery';
+import { LinkedInIcon } from '@/components/icons/LinkedInIcon';
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 import { heroSection, skillTags, siteConfig } from '@/config/site';
 import { getCanonicalPath, getDefaultSeo } from '@/lib/seo';
 import { getWhatsappUrl } from '@/utils/contact';
@@ -41,7 +43,7 @@ export default function HomePage() {
         <Container className="flex flex-col gap-10 py-16 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-6">
             <span className="text-xs uppercase tracking-[0.4em] text-primary-500">
-              Delivery manager & transformacao digital
+              Coordenador de Sistemas & Lider Técnico
             </span>
             <h1 className="text-4xl font-semibold leading-tight text-default lg:text-5xl">
               {heroSection.headline}
@@ -55,13 +57,16 @@ export default function HomePage() {
                 )}
                 label="Conversar no WhatsApp"
                 ariaLabel="Iniciar conversa com Danilo no WhatsApp"
+                variant="whatsapp"
+                icon={<WhatsAppIcon />}
                 external
               />
               <CTAButton
                 href={siteConfig.linkedin}
                 label="LinkedIn"
-                variant="secondary"
+                variant="linkedin"
                 ariaLabel="Abrir perfil de LinkedIn"
+                icon={<LinkedInIcon />}
                 external
               />
               <CTAButton href="/cv" label="Baixar CV" variant="ghost" ariaLabel="Abrir CV em PDF" />
