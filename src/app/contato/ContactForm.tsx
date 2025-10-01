@@ -73,29 +73,11 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = async (data: ContactFormData) => {
-    setSubmitted(false);
-    setServerError(null);
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Falha ao enviar a mensagem.');
-      }
-
-      setSubmitted(true);
-      reset();
-    } catch (error) {
-      setServerError(error instanceof Error ? error.message : 'Ocorreu um erro inesperado.');
-    }
+  const onSubmit = (data: ContactFormData) => {
+    console.info('Contato simulado enviado:', data);
+    setSubmitted(true);
+    setServerError(null); // Garante que erros antigos sejam limpos
+    reset();
   };
 
   return (
