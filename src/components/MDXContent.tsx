@@ -13,7 +13,12 @@ const components: MDXComponents = {
   p: (props) => <p className="mt-4 text-base leading-relaxed text-soft" {...props} />,
   ul: (props) => <ul className="mt-4 list-disc space-y-2 pl-6 text-soft" {...props} />,
   ol: (props) => <ol className="mt-4 list-decimal space-y-2 pl-6 text-soft" {...props} />,
-  ImageGallery,
+  ImageGallery: (props: Record<string, unknown>) => {
+    if ('images' in props && Array.isArray(props.images)) {
+      return <ImageGallery images={props.images as string[]} />;
+    }
+    return null;
+  },
 };
 
 export function MDXContent({ code }: { code: string }) {
