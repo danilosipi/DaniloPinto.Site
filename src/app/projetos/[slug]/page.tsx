@@ -6,6 +6,8 @@ import { allProjects } from 'contentlayer/generated';
 import { Container } from '@/components/Container';
 import { CTAButton } from '@/components/CTAButton';
 import { MDXContent } from '@/components/MDXContent';
+import { EmailIcon } from '@/components/icons/EmailIcon';
+import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 import { getMailtoLink, getWhatsappUrl } from '@/utils/contact';
 import { getCanonicalPath, getDefaultSeo } from '@/lib/seo';
 
@@ -77,7 +79,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           '@type': 'ListItem',
           position: 2,
           name: 'Projetos',
-          item: getCanonicalPath('#projetos'),
+          item: getCanonicalPath('/projetos'),
         },
         {
           '@type': 'ListItem',
@@ -86,6 +88,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           item: canonical,
         },
       ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      headline: project.title,
+      description: project.excerpt,
+      author: {
+        '@type': 'Person',
+        name: 'Danilo Pinto',
+      },
+      datePublished: project.date,
     },
   ];
 
@@ -133,6 +146,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           href={getWhatsappUrl(whatsappMessage)}
           label="Conversar agora"
           ariaLabel={`Conversar com Danilo sobre o projeto ${project.title}`}
+          variant="whatsapp"
+          icon={<WhatsAppIcon />}
           external
         />
         <CTAButton
@@ -140,6 +155,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           label="Enviar email"
           variant="secondary"
           ariaLabel={`Enviar email sobre o projeto ${project.title}`}
+          icon={<EmailIcon />}
           external
         />
       </div>
