@@ -8,8 +8,8 @@ type InternalHref = Parameters<typeof Link>[0]['href'];
 
 const statusLabels: Record<string, string> = {
   active: 'Ativos',
-  completed: 'Concluidos',
-  prototype: 'Prototipos & Exploracoes',
+  completed: 'Concluídos',
+  prototype: 'Protótipos & Explorações',
 };
 
 const statusOrder = ['active', 'completed', 'prototype'];

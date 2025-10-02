@@ -13,8 +13,8 @@ import { siteConfig } from '@/config/site';
 import { getWhatsappUrl } from '@/utils/contact';
 
 const navigation = [
-  { href: '#experiencia', label: 'Experiencia' },
-  { href: '#formacao', label: 'Formação/Cursos' },
+  { href: '/#experiencia', label: 'Experiência' },
+  { href: '/#formacao', label: 'Formação/Cursos' },
   { href: '/projetos', label: 'Projetos' },
   { href: '/contato', label: 'Contato' },
 ];
@@ -51,12 +51,12 @@ export function Header() {
       <Container
         as="nav"
         className="flex items-center justify-between gap-4 py-4"
-        aria-label="Navegacao principal"
+        aria-label="Navegação principal"
       >
         <Link
           href="/"
           className="flex items-center gap-3"
-          aria-label="Voltar para a pagina inicial"
+          aria-label="Voltar para a página inicial"
         >
           <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary-500/20 bg-primary-500/10">
             <Image

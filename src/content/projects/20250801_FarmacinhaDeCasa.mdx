@@ -1,0 +1,93 @@
+---
+title: 'Farmacinha De Casa'
+slug: 'farmacinhadecasa'
+excerpt: 'Assistente digital no WhatsApp para organizar medicamentos em casa com cadastro inteligente, alertas, multi-usuário e painel web.'
+date: '2025-08-01'
+tags:
+  - 'AI'
+  - 'Automação'
+  - 'WhatsApp'
+  - 'n8n'
+  - 'MySQL'
+  - 'ProductDesign'
+  - 'SaaS'
+status: 'active'
+coverImage: '/images/projects/example-cover.jpg'
+---
+
+## Problema
+
+Famílias frequentemente perdem medicamentos por vencimento, esquecem quantidades disponíveis ou têm dificuldade em organizar caixas espalhadas pela casa.  
+O desafio era criar uma solução simples, acessível e inteligente para gerenciar o estoque doméstico de remédios de forma digital, evitando desperdícios e aumentando a segurança.
+
+## Papel e Responsabilidades
+
+Atuei como **Arquiteto e Gerente de Produto Digital**, responsável por toda a **ideia, concepção, arquitetura e implementação técnica** da Farmacinha De Casa.  
+Minhas principais responsabilidades foram:
+
+- Modelagem de dados e estrutura **multi-tenant** no **MySQL**.
+- Definição e desenvolvimento dos **fluxos conversacionais no WhatsApp** via **n8n + Evolution API**.
+- Integração de **IA generativa** para interpretar fotos de medicamentos (nome, dosagem, validade, quantidade).
+- Criação de processos de **upsert** para manter o banco de dados consistente e sem duplicação.
+- Estruturação do ambiente de desenvolvimento com **WSL2, Docker, Portainer e ngrok**.
+- Desenvolvimento do **painel administrativo web** para visualização e gestão do inventário.
+- Continuidade na evolução do produto, atuando hoje como **responsável pela manutenção, testes e melhorias da plataforma**.
+
+## Solução e Estratégia
+
+A **Farmacinha De Casa** foi implementada como um **assistente digital no WhatsApp**, priorizando simplicidade para o usuário final e robustez técnica no backend:
+
+- Usuário envia uma **foto do remédio** ou **digita informações**.
+- Um **AI Agent** processa os dados, gera JSON estruturado e salva no banco.
+- Cada família possui sua **farmácia digital exclusiva** (multi-tenant).
+- O sistema usa **estados de conversa** para onboarding e coleta de informações faltantes.
+- O dono da Farmacinha pode **compartilhar o estoque** com outros membros, tornando-a multi-usuário.
+- O painel web permite **visualizar medicamentos, fotos e relatórios** em tempo real.
+
+## Impacto e Resultados
+
+O projeto trouxe uma solução inédita para organização doméstica de medicamentos.  
+Entre os principais resultados:
+
+- **Redução de desperdício** de remédios vencidos.
+- Maior **segurança e controle** no uso de medicamentos pela família.
+- Estrutura **SaaS multi-usuário**, permitindo escalar o produto.
+- Validação do conceito de **“farmácia digital no bolso”**, acessível via WhatsApp.
+- Base tecnológica sólida para expansão futura (alertas automáticos, integração com farmácias, relatórios avançados).
+
+## Tecnologias Utilizadas
+
+- **n8n** → automação dos fluxos conversacionais (hospedagem local).
+- **Evolution API** → integração com WhatsApp (hospedagem local).
+- **MySQL** → banco multi-tenant.
+- **PHP/Next.js** → painel web administrativo.
+- **WSL2, Docker, Portainer, ngrok** → ambiente de desenvolvimento e deploy.
+- **Gemini AI / LLMs** → OCR e interpretação semântica de rótulos.
+
+## Destaques
+
+- Implementação de **conversa inteligente no WhatsApp** com memória de contexto.
+- Uso de **IA para leitura e interpretação de rótulos de medicamentos**.
+- Arquitetura **multi-tenant**, escalável e preparada para SaaS.
+- **Upsert automático** garantindo consistência dos dados.
+- Desenvolvimento de **painel administrativo web** com relatórios de estoque.
+- Continuidade na **gestão técnica e evolução do produto**.
+
+## Quer Saber Mais?
+
+- Site: <a href="https://farmacinhadecasa.dstudium.com" target="_blank" rel="noopener noreferrer">farmacinhadecasa.dstudium.com</a>
+- Instagram: <a href="" target="_self" rel="noopener noreferrer">Em Breve</a>
+- Facebook: <a href="" target="_self" rel="noopener noreferrer">Em Breve</a>
+
+## Galeria de Imagens
+
+<ImageGallery
+  images={[
+    '/images/projects/farmacinha-1.jpg',
+    '/images/projects/farmacinha-2.jpg',
+    '/images/projects/farmacinha-3.jpg',
+    '/images/projects/farmacinha-4.jpg',
+    '/images/projects/farmacinha-5.jpg',
+    '/images/projects/farmacinha-6.jpg',
+  ]}
+/>

@@ -16,7 +16,7 @@ const contactSchema = z.object({
     .regex(/^[a-zA-Z\s]+$/, 'O nome deve conter apenas letras e espaços.'),
   email: z
     .string()
-    .email('Informe um email válido.')
+    .email('Informe um e-mail válido.')
     .refine(
       (e) => !['email@email.com', 'test@test.com', 'example@example.com'].includes(e.toLowerCase()),
       'Por favor, use um endereço de e-mail real.',
@@ -49,7 +49,7 @@ const directChannels: DirectChannel[] = [
   },
   {
     label: 'WhatsApp',
-    href: getWhatsappUrl('Ola Danilo, vi seu portfolio e gostaria de conversar.'),
+    href: getWhatsappUrl('Olá Danilo, vi seu portfólio e gostaria de conversar.'),
     description: 'Mensagens rápidas e follow-ups',
   },
 ];
@@ -85,7 +85,7 @@ export function ContactForm() {
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-6 rounded-2xl border border-primary-500/10 bg-surface p-8 shadow-soft"
-        aria-label="Formulario de contato"
+        aria-label="Formulário de contato"
       >
         <div className="grid gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-2">
@@ -189,7 +189,7 @@ export function ContactForm() {
         <div className="space-y-1">
           <h2 className="text-lg font-semibold text-default">Canais diretos</h2>
           <p className="text-sm text-soft">
-            Prefere falar agora? Escolha o canal ideal e mencione que encontrou o portfolio digital.
+            Prefere falar agora? Escolha o canal ideal e mencione que encontrou o portfólio digital.
           </p>
         </div>
         <ul className="space-y-3 text-sm text-soft">
