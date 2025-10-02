@@ -116,8 +116,8 @@ export default function HomePage() {
               Experiencia Corporativa
             </h2>
             <p className="section-subtitle">
-              Programas liderados em seguradoras, consultorias e laboratorios de inovacao, com foco
-              em confiabilidade, automacao e modelo operacional.
+              Programas liderados em seguradoras, consultorias e laboratórios de inovação, com foco
+              em confiabilidade, automação e modelo operacional.
             </p>
           </div>
           <ExperienceTimeline />
@@ -135,10 +135,10 @@ export default function HomePage() {
         <Container className="space-y-6">
           <div className="space-y-2">
             <h2 id="skills-heading" className="section-title">
-              Habilidades e temas de atuacao
+              Habilidades e Temas de Atuação
             </h2>
             <p className="section-subtitle">
-              Conjunto de disciplinas utilizadas para acelerar entregas, evoluir operacoes e escalar
+              Conjunto de disciplinas utilizadas para acelerar entregas, evoluir operações e escalar
               cultura digital.
             </p>
           </div>
@@ -156,10 +156,10 @@ export default function HomePage() {
         <Container className="space-y-6">
           <div className="space-y-2">
             <h2 id="projetos-heading" className="section-title">
-              Projetos fora do corporativo
+              Projetos Pessoais
             </h2>
             <p className="section-subtitle">
-              Iniciativas autorais e pilotos que exploram automacao, assistentes digitais e novos
+              Iniciativas autorais e pilotos que exploram automação, assistentes digitais e novos
               modelos de entrega.
             </p>
           </div>
@@ -171,10 +171,10 @@ export default function HomePage() {
         <Container className="grid gap-8 rounded-2xl border border-primary-500/10 bg-surface p-8 shadow-soft lg:grid-cols-[2fr_1fr] lg:items-center">
           <div className="space-y-4">
             <h2 id="conectar-heading" className="text-3xl font-semibold text-default">
-              Vamos conversar sobre o proximo ciclo de transformacao do seu time
+              Vamos conversar sobre o próximo ciclo de transformação do seu time
             </h2>
             <p className="text-muted">
-              Ajudo liderancas a conectar objetivos estrategicos com execucao, trazendo estrutura,
+              Ajudo lideranças a conectar objetivos estratégicos com execução, trazendo estrutura,
               indicadores e cultura de confiabilidade.
             </p>
           </div>

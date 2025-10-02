@@ -26,10 +26,7 @@ export function InfoSection({ title, items, layout = 'list' }: InfoSectionProps)
         })}
       >
         {items.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col rounded-2xl border border-primary-500/10 bg-surface p-6 shadow-soft"
-          >
+          <div key={index} className="flex flex-col rounded-2xl border border-primary-500/10 bg-surface p-6 shadow-soft">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-default">{item.title}</h3>
               <span className="text-sm font-medium text-muted">{item.period}</span>
@@ -37,13 +34,13 @@ export function InfoSection({ title, items, layout = 'list' }: InfoSectionProps)
 
             <div className="mt-4 flex items-center gap-4">
               {item.logo && (
-                <div className="relative h-12 w-12 flex-shrink-0">
+                <div className="relative h-10 w-10 flex-shrink-0">
                   <Image
                     src={item.logo}
                     alt={`Logo de ${item.institution}`}
                     fill
                     className="rounded-full object-cover"
-                    sizes="80px"
+                    sizes="60px"
                   />
                 </div>
               )}
