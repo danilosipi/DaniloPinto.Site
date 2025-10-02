@@ -14,6 +14,7 @@ import { getWhatsappUrl } from '@/utils/contact';
 
 const navigation = [
   { href: '#experiencia', label: 'Experiencia' },
+  { href: '#formacao', label: 'Formação/Cursos' },
   { href: '/projetos', label: 'Projetos' },
   { href: '/contato', label: 'Contato' },
 ];
