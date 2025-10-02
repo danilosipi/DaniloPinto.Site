@@ -1,0 +1,91 @@
+---
+title: 'Farmacinha De Casa'
+slug: 'assistente-whatsapp-farmacia-digital'
+excerpt: 'Assistente digital no WhatsApp para organizar medicamentos em casa: cadastro inteligente, alertas e inventário multi-usuário.'
+date: '2025-08-01'
+tags:
+  - 'AI'
+  - 'Automação'
+  - 'WhatsApp'
+  - 'n8n'
+  - 'MySQL'
+status: 'active'
+coverImage: '/images/projects/example-cover.jpg'
+---
+
+## Problema
+
+Famílias frequentemente perdem medicamentos por vencimento, esquecem quantidades disponíveis ou têm dificuldade em organizar caixas espalhadas em casa.  
+O desafio era criar uma solução simples, acessível e inteligente para gerenciar o estoque doméstico de remédios de forma digital.
+
+## Papel e Responsabilidades
+
+Fui responsável por toda a **ideia e concepção, arquitetura e implementação técnica** do projeto.  
+Minhas principais atividades incluíram:
+
+- Modelagem de dados e estrutura multi-tenant no **MySQL**.
+- Definição e desenvolvimento dos fluxos conversacionais no **WhatsApp** via **n8n + Evolution API**.
+- Integração de IA generativa para interpretação de fotos de medicamentos.
+- Criação de processos de **upsert** para manter o banco de dados consistente.
+- Estruturação do ambiente de desenvolvimento local com **WSL2, Docker, Portainer e ngrok**.
+- Desenvolvimento do painel administrativo web para visualização do inventário.
+
+## Solução e Estratégia
+
+Implementei a **Farmacinha De Casa** como um **assistente digital no WhatsApp**, com foco em simplicidade para o usuário final e robustez técnica por trás:
+
+- O usuário pode **enviar uma foto do remédio** ou **digitar informações**.
+- Um **AI Agent** processa a foto/texto, extrai informações (nome, dosagem, quantidade, validade).
+- Os dados são convertidos em **JSON** estruturado e armazenados no banco.
+- Cada família tem sua **farmácia digital exclusiva** (multi-tenant)\*.
+  <small>
+    <em>
+      Multi-tenant (ou multi-inquilino, em tradução literal) é um modelo de arquitetura de software
+      no qual uma única instância de uma aplicação (banco de dados, servidor, serviço) é
+      compartilhada por vários clientes (tenants), mas cada cliente tem seus dados e configurações
+      isolados.
+    </em>
+  </small>
+- O sistema possui **estados de conversa**, garantindo onboarding fluido e captura de informações faltantes.
+- O painel web permite **visualizar medicamentos, fotos e relatórios de estoque**.
+- O dono da Farmacinha pode compartilhar seu estoque com outro usuário que quiser, fazendo com que seja multi-usuário
+
+## Impacto e Resultados
+
+O projeto trouxe uma solução inédita para organização doméstica de medicamentos.  
+Resultados obtidos:
+
+- **Redução de desperdício** de remédios vencidos.
+- Maior **segurança e controle** no uso de medicamentos pela família.
+- Capacidade de escalar como produto SaaS multi-usuário.
+- Validação do conceito de **“farmácia digital no bolso”**, acessível a qualquer pessoa via WhatsApp.
+
+## Tecnologias Utilizadas
+
+- **n8n** para automação dos fluxos conversacionais. (ainda com hospedagem local)
+- **Evolution API** para integração com WhatsApp. (ainda com hospedagem local)
+- **MySQL** para persistência dos dados (multi-tenant).
+- **PHP/Next.js** para painel web.
+- **WSL2, Docker, Portainer, ngrok** para ambiente de desenvolvimento e deploy.
+- **Gemini AI / LLMs** para OCR e interpretação semântica de rótulos.
+
+## Destaques
+
+- Implementação de **conversa inteligente no WhatsApp** com estados e memória.
+- Uso de **IA para leitura de rótulos de medicamentos** a partir de fotos.
+- Estrutura **multi-tenant** permitindo que várias famílias usem a mesma plataforma de forma isolada.
+- **Upsert automático no banco de dados**, garantindo consistência das informações.
+- Criação de **painel administrativo** para visualização do inventário.
+
+## Galeria de Imagens
+
+<ImageGallery
+  images={[
+    '/images/projects/example-cover.jpg',
+    '/images/projects/example-cover.jpg',
+    '/images/projects/example-cover.jpg',
+    '/images/projects/example-cover.jpg',
+    '/images/projects/example-cover.jpg',
+    '/images/projects/example-cover.jpg',
+  ]}
+/>

@@ -8,6 +8,7 @@ import { CTAButton } from '@/components/CTAButton';
 import { MDXContent } from '@/components/MDXContent';
 import { EmailIcon } from '@/components/icons/EmailIcon';
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
+import { FloatingBackButton } from '@/components/FloatingBackButton';
 import { getMailtoLink, getWhatsappUrl } from '@/utils/contact';
 import { getCanonicalPath, getDefaultSeo } from '@/lib/seo';
 
@@ -159,6 +160,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           external
         />
       </div>
+      <FloatingBackButton />
     </Container>
   );
 }

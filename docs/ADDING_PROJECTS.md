@@ -61,15 +61,15 @@ Liste as principais tecnologias, frameworks e ferramentas que foram usadas no pr
 
 #### O Significado de Cada Campo
 
-*   **`title`**: O título principal que aparecerá na página do projeto.
-*   **`slug`**: A parte que irá na URL (ex: `/projetos/meu-projeto`). Use letras minúsculas e hífens.
-*   **`excerpt`**: O resumo que aparece na listagem de todos os projetos.
-*   **`date`**: A data de conclusão ou da última atualização importante do projeto.
-*   **`tags`**: Palavras-chave que descrevem o projeto. Elas aparecerão como "pílulas" na página.
-*   **`status`**: O estado atual do projeto. Use uma das três opções:
-    *   `completed`: Projeto concluído.
-    *   `active`: Projeto em andamento.
-    *   `prototype`: É um protótipo ou estudo.
-*   **`coverImage`**: O caminho para a imagem de capa que você adicionou na pasta `public/images/projects/`.
+- **`title`**: O título principal que aparecerá na página do projeto.
+- **`slug`**: A parte que irá na URL (ex: `/projetos/meu-projeto`). Use letras minúsculas e hífens.
+- **`excerpt`**: O resumo que aparece na listagem de todos os projetos.
+- **`date`**: A data de conclusão ou da última atualização importante do projeto.
+- **`tags`**: Palavras-chave que descrevem o projeto. Elas aparecerão como "pílulas" na página.
+- **`status`**: O estado atual do projeto. Use uma das três opções:
+  - `completed`: Projeto concluído.
+  - `active`: Projeto em andamento.
+  - `prototype`: É um protótipo ou estudo.
+- **`coverImage`**: O caminho para a imagem de capa que você adicionou na pasta `public/images/projects/`.
 
 Depois de criar o arquivo, o Contentlayer (a ferramenta que lê esses arquivos) irá detectar as mudanças automaticamente quando você reiniciar o servidor de desenvolvimento.

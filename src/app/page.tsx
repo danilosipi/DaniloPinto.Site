@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { CTAButton } from '@/components/CTAButton';
 import { Container } from '@/components/Container';
 import { ExperienceTimeline } from '@/components/ExperienceTimeline';
 import { ProjectsGallery } from '@/components/ProjectsGallery';
 import { LinkedInIcon } from '@/components/icons/LinkedInIcon';
+import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { WhatsAppIcon } from '@/components/icons/WhatsAppIcon';
 import {
   academicExperience,
@@ -42,7 +44,9 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const featuredProjects = sortProjects();
+  const sortedProjects = sortProjects();
+  const activeProjects = sortedProjects.filter((p) => p.status === 'active');
+  const otherProjects = sortedProjects.filter((p) => p.status !== 'active');
 
   return (
     <div className="space-y-24 pb-24">
@@ -124,12 +128,14 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <Container>
-        <div className="space-y-16">
-          <InfoSection title="Formação Acadêmica" items={academicExperience} layout="grid" />
-          <InfoSection title="Cursos e Especializações" items={coursesExperience} layout="grid" />
-        </div>
-      </Container>
+      <section id="formacao">
+        <Container>
+          <div className="space-y-16">
+            <InfoSection title="Formação Acadêmica" items={academicExperience} layout="grid" />
+            <InfoSection title="Cursos e Especializações" items={coursesExperience} layout="grid" />
+          </div>
+        </Container>
+      </section>
 
       <section id="skills" aria-labelledby="skills-heading" className="py-16">
         <Container className="space-y-6">
@@ -156,14 +162,40 @@ export default function HomePage() {
         <Container className="space-y-6">
           <div className="space-y-2">
             <h2 id="projetos-heading" className="section-title">
-              Projetos Pessoais
+              Projetos em Destaque
             </h2>
             <p className="section-subtitle">
-              Iniciativas autorais e pilotos que exploram automação, assistentes digitais e novos
-              modelos de entrega.
+              Iniciativas e estudos de caso em transformação digital, automação e cultura de
+              engenharia.
             </p>
           </div>
-          <ProjectsGallery projects={featuredProjects} />
+          <ProjectsGallery projects={activeProjects} />
+
+          {otherProjects.length > 0 && (
+            <div className="space-y-8 pt-12">
+              <div className="space-y-2">
+                <h3 className="text-2xl font-semibold text-default">Outros Projetos</h3>
+                <p className="text-soft">
+                  Projetos mais antigos ou estudos de caso que valem a pena mencionar.
+                </p>
+              </div>
+              <div className="space-y-6">
+                {otherProjects.map((project) => (
+                  <div key={project.slug}>
+                    <h4 className="text-lg font-semibold">
+                      <Link
+                        href={`/projetos/${project.slug}`}
+                        className="text-default transition-colors hover:text-primary-500"
+                      >
+                        {project.title}
+                      </Link>
+                    </h4>
+                    <p className="mt-1 text-sm text-muted">{project.excerpt}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </Container>
       </section>
 
@@ -196,6 +228,7 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+      <ScrollToTopButton />
     </div>
   );
 }

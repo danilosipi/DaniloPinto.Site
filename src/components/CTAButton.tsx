@@ -3,13 +3,14 @@ import { ReactNode } from 'react';
 import clsx from 'clsx';
 
 type CTAButtonProps = {
-  href: string;
+  href?: string;
   label?: string;
   external?: boolean;
   icon?: ReactNode;
   variant?: 'primary' | 'secondary' | 'ghost' | 'whatsapp' | 'linkedin';
   className?: string;
   ariaLabel?: string;
+  onClick?: () => void;
 };
 
 type ButtonVariant = NonNullable<CTAButtonProps['variant']>;
@@ -34,6 +35,7 @@ export function CTAButton({
   variant = 'primary',
   className,
   ariaLabel,
+  onClick,
 }: CTAButtonProps) {
   const classes = clsx(
     baseClasses,
@@ -45,25 +47,34 @@ export function CTAButton({
     className,
   );
 
-  if (external) {
+  if (href) {
+    if (external) {
+      return (
+        <a
+          href={href}
+          aria-label={ariaLabel ?? label}
+          className={classes}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          {icon}
+          {label && <span>{label}</span>}
+        </a>
+      );
+    }
+
     return (
-      <a
-        href={href}
-        aria-label={ariaLabel ?? label}
-        className={classes}
-        target="_blank"
-        rel="noreferrer noopener"
-      >
+      <Link href={href as InternalHref} aria-label={ariaLabel ?? label} className={classes}>
         {icon}
         {label && <span>{label}</span>}
-      </a>
+      </Link>
     );
   }
 
   return (
-    <Link href={href as InternalHref} aria-label={ariaLabel ?? label} className={classes}>
+    <button onClick={onClick} aria-label={ariaLabel ?? label} className={classes}>
       {icon}
       {label && <span>{label}</span>}
-    </Link>
+    </button>
   );
 }

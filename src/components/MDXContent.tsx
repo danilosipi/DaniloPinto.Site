@@ -3,6 +3,8 @@
 import { ComponentType } from 'react';
 import { useMDXComponent } from 'next-contentlayer2/hooks';
 
+import { ImageGallery } from './ImageGallery';
+
 type MDXComponents = Record<string, ComponentType<Record<string, unknown>>>;
 
 const components: MDXComponents = {
@@ -11,6 +13,7 @@ const components: MDXComponents = {
   p: (props) => <p className="mt-4 text-base leading-relaxed text-soft" {...props} />,
   ul: (props) => <ul className="mt-4 list-disc space-y-2 pl-6 text-soft" {...props} />,
   ol: (props) => <ol className="mt-4 list-decimal space-y-2 pl-6 text-soft" {...props} />,
+  ImageGallery,
 };
 
 export function MDXContent({ code }: { code: string }) {
