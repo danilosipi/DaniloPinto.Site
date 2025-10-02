@@ -25,7 +25,7 @@ export async function generateMetadata({
   const project = allProjects.find((item) => item.slug === slug);
 
   if (!project) {
-    return { title: 'Projeto nao encontrado | Danilo Pinto' };
+    return { title: 'Projeto não encontrado | Danilo Pinto' };
   }
 
   const canonical = getCanonicalPath(`/projetos/${project.slug}`);
@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   }
 
   const canonical = getCanonicalPath(`/projetos/${project.slug}`);
-  const whatsappMessage = `Ola Danilo, li sobre o projeto ${project.title} e gostaria de conversar.`;
+  const whatsappMessage = `Olá Danilo, li sobre o projeto ${project.title} e gostaria de conversar.`;
   const emailSubject = `Quero saber mais sobre ${project.title}`;
 
   const breadcrumbJsonLd = [
@@ -139,7 +139,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             Quer saber como este projeto pode ajudar a sua equipe?
           </h2>
           <p className="text-sm text-muted">
-            Vamos conversar sobre desafios de transformacao, confiabilidade ou automacao na sua
+            Vamos conversar sobre desafios de transformação, confiabilidade ou automação na sua
             empresa.
           </p>
         </div>

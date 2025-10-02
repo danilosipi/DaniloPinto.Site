@@ -11,7 +11,7 @@ const defaultSeo = getDefaultSeo();
 
 export const metadata: Metadata = {
   title: 'Contato | Danilo Pinto',
-  description: 'Fale comigo sobre transformacao digital, automacao e confiabilidade.',
+  description: 'Fale comigo sobre transformação digital, automação e confiabilidade.',
   keywords: defaultSeo.keywords,
   alternates: {
     canonical: getCanonicalPath('/contato'),
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     ...defaultSeo.openGraph,
     title: 'Contato | Danilo Pinto',
-    description: 'Fale com comigo sobre transformacao digital, automacao e confiabilidade.',
+    description: 'Fale comigo sobre transformação digital, automação e confiabilidade.',
     url: getCanonicalPath('/contato'),
   },
   twitter: {
     ...defaultSeo.twitter,
     title: 'Contato | Danilo Pinto',
-    description: 'Fale comigo sobre transformacao digital, automacao e confiabilidade.',
+    description: 'Fale comigo sobre transformação digital, automação e confiabilidade.',
   },
 };
 
@@ -35,16 +35,16 @@ export default function ContactPage() {
       <Container className="space-y-12 py-16">
         <header className="max-w-3xl space-y-4">
           <h1 className="text-4xl font-semibold text-default">
-            Vamos desenhar o proximo ciclo do seu time
+            Vamos desenhar o próximo ciclo do seu time
           </h1>
           <p className="text-lg text-soft">
-            Conte como posso ajudar: transformacao de operacoes, automacao inteligente ou
-            estruturacao de SRE e governanca. Respondo em ate um dia util.
+            Conte como posso ajudar: transformação de operações, automação inteligente ou
+            estruturação de SRE e governança. Respondo em até um dia útil.
           </p>
           <div className="flex flex-wrap gap-3">
             <CTAButton
               href={getWhatsappUrl(
-                'Ola, gostaria de conversar sobre uma oportunidade. Podemos marcar uma call?',
+                'Olá, gostaria de conversar sobre uma oportunidade. Podemos marcar uma call?',
               )}
               label="Conversar via WhatsApp"
               ariaLabel="Abrir conversa comigo no WhatsApp"
@@ -54,9 +54,9 @@ export default function ContactPage() {
             />
             <CTAButton
               href={getMailtoLink('Convite para conversar sobre oportunidade')}
-              label="Enviar email"
+              label="Enviar e-mail"
               variant="secondary"
-              ariaLabel="Enviar email para mim"
+              ariaLabel="Enviar e-mail para mim"
               external
             />
           </div>

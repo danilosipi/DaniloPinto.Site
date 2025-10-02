@@ -4,7 +4,7 @@ import { corporateExperience, ExperienceItem } from '@/config/site';
 
 const typeLabels: Record<ExperienceItem['type'], string> = {
   andamento: 'Em andamento',
-  concluido: 'Concluido',
+  concluido: 'Concluído',
   marco: 'Marco de carreira',
 };
 

@@ -23,7 +23,7 @@ export function Footer() {
             Abrir CV (PDF)
           </Link>
           <span className="text-xs text-subtle">
-            &copy; {year} Portfolio de {siteConfig.name}
+            &copy; {year} Portfólio de {siteConfig.name}
           </span>
         </div>
       </Container>

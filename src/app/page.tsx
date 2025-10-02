@@ -54,7 +54,7 @@ export default function HomePage() {
         <Container className="flex flex-col gap-10 py-16 lg:flex-row lg:items-center">
           <div className="flex-1 space-y-6">
             <span className="text-xs uppercase tracking-[0.4em] text-primary-500">
-              Coordenador de Sistemas & Lider Técnico
+              Coordenador de Sistemas & Líder Técnico
             </span>
             <h1 className="text-4xl font-semibold leading-tight text-default lg:text-5xl">
               {heroSection.headline}
@@ -64,7 +64,7 @@ export default function HomePage() {
             <div className="flex flex-col gap-3 sm:flex-row">
               <CTAButton
                 href={getWhatsappUrl(
-                  'Ola Danilo, gostaria de conversar sobre oportunidades ou desafios do meu time.',
+                  'Olá Danilo, gostaria de conversar sobre oportunidades ou desafios do meu time.',
                 )}
                 label="Conversar no WhatsApp"
                 ariaLabel="Iniciar conversa com Danilo no WhatsApp"
@@ -117,7 +117,7 @@ export default function HomePage() {
         <Container className="space-y-8">
           <div className="space-y-2">
             <h2 id="experiencia-heading" className="section-title">
-              Experiencia Corporativa
+              Experiência Corporativa
             </h2>
             <p className="section-subtitle">
               Programas liderados em seguradoras, consultorias e laboratórios de inovação, com foco
@@ -213,7 +213,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-3">
             <CTAButton
               href={getWhatsappUrl(
-                'Ola Danilo, gostaria de agendar uma conversa sobre transformacao digital.',
+                'Olá Danilo, gostaria de agendar uma conversa sobre transformação digital.',
               )}
               label="Agendar conversa"
               ariaLabel="Agendar conversa via WhatsApp"
@@ -221,7 +221,7 @@ export default function HomePage() {
             />
             <CTAButton
               href="/contato"
-              label="Formulario de contato"
+              label="Formulário de contato"
               variant="secondary"
               ariaLabel="Abrir pagina de contato"
             />
