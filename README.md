@@ -59,7 +59,7 @@ src/
   styles/globals.css            # tokens de cor e resets
   utils/contact.ts              # helpers de contato
 public/
-  cv/cv.pdf                     # CV (placeholder)
+  cv/cvDaniloPinto_lideranca.pdf # CV (placeholder)
   images/                       # headshot e capas temporarias
 ```
 
@@ -98,7 +98,7 @@ Após salvar o arquivo, reinicie o servidor de desenvolvimento.
 
 - Ajuste dados em `src/config/site.ts` (hero, timeline, skills, canais).
 - Substitua imagens em `public/images/**` por assets reais.
-- Troque `public/cv/cv.pdf` pelo curriculum oficial.
+- Troque `public/cv/cvDaniloPinto_lideranca.pdf` pelo curriculum oficial.
 - Atualize timeline conforme CV definitivo.
 
 ## Checklist de QA

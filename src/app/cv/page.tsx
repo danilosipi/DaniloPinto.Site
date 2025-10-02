@@ -38,7 +38,7 @@ export default function CvPage() {
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <CTAButton
-            href="/cv/cv.pdf"
+            href="/cv/cvDaniloPinto_lideranca.pdf"
             label="Abrir CV (PDF)"
             ariaLabel="Abrir o arquivo de currículo em PDF"
             external
